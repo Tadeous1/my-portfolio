@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume – Jane Doe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav id="navbar" class="navbar">
+            <div class="nav-container">
+                <a href="index.html#home" class="logo" aria-label="Home">Jane Doe</a>
+                <ul class="nav-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="resume.html" class="active">Resume</a></li>
+                </ul>
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <svg width="24" height="24" fill="none"><circle cx="12" cy="12" r="10" stroke="#333" stroke-width="2"/></svg>
+                </button>
+                <div class="mobile-menu" aria-label="Open navigation menu" tabindex="0">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="resume fade-in" style="padding-top:6rem; max-width:800px; margin:auto;">
+            <h2>Resume</h2>
+            <p><a href="resume.pdf" target="_blank" class="btn btn-primary">Download PDF</a></p>
+            <h3>Jane Doe</h3>
+            <p>Email: jane.doe@email.com | LinkedIn: linkedin.com/in/janedoe</p>
+            <h4>Experience</h4>
+            <ul>
+                <li>
+                    <strong>Data Analyst</strong> – Company Name (2022–Present)
+                    <ul>
+                        <li>Analyzed business data to drive key decisions and improve processes.</li>
+                        <li>Developed dashboards in Power BI and Tableau.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Junior Data Analyst</strong> – Company Name (2020–2022)
+                    <ul>
+                        <li>Assisted in data cleaning, visualization, and reporting.</li>
+                    </ul>
+                </li>
+            </ul>
+            <h4>Education</h4>
+            <ul>
+                <li>B.Sc. in Data Science, University Name, 2020</li>
+            </ul>
+            <h4>Skills</h4>
+            <div class="skills">
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Power BI</span>
+                <span class="skill-tag">Excel</span>
+                <span class="skill-tag">Tableau</span>
+                <span class="skill-tag">R</span>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Jane Doe. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
