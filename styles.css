@@ -913,3 +913,14 @@ body.dark-mode .logo {
         margin-top: 0.5rem;
     }
 }
+
+@media (max-width: 900px) {
+  .hero {
+    padding-top: 70px; /* Adjust this value to match your nav height */
+  }
+}
+@media (max-width: 520px) {
+  .hero {
+    padding-top: 56px; /* Slightly smaller for very small screens if nav shrinks */
+  }
+}
