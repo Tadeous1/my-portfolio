@@ -242,10 +242,10 @@ document.querySelectorAll('.project-link').forEach(link => {
     });
 });
 
-// ...your existing JS above...
-
+// ================================
+// Chart.js in Hero Data Viz
+// ================================
 window.addEventListener('DOMContentLoaded', function() {
-  // ...your other initialization code...
   const ctx = document.getElementById('heroChart');
   if (ctx) {
     new Chart(ctx, {
@@ -271,5 +271,25 @@ window.addEventListener('DOMContentLoaded', function() {
         }
       }
     });
+  }
+
+  // ============ Theme Toggle (Light/Dark Mode) ============
+  const themeToggle = document.querySelector('.theme-toggle');
+  const body = document.body;
+  // Load theme preference if any
+  if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+  }
+  if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+          body.classList.toggle('dark-mode');
+          if (body.classList.contains('dark-mode')) {
+              localStorage.setItem('theme', 'dark');
+          } else {
+              localStorage.setItem('theme', 'light');
+          }
+          // Optionally reload to update chart colors (but not required for simple color schemes)
+          // location.reload();
+      });
   }
 });
