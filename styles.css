@@ -39,10 +39,11 @@ nav {
     top: 0;
     width: 100%;
     padding: 1rem 2rem;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: #4A90E2 !important; /* Use logo color */
+    box-shadow: 0 2px 16px rgba(74, 144, 226, 0.10);
+    border-bottom: 2px solid #2274e0;
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: background 0.4s, box-shadow 0.4s;
 }
 
 nav.scrolled {
@@ -58,9 +59,17 @@ nav.scrolled {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #4A90E2;
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    color: #fff !important; /* Make logo white */
+    text-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    transition: color 0.3s;
+}
+
+body.dark-mode .logo {
+    color: #181A1B !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 
 .nav-links {
@@ -70,14 +79,18 @@ nav.scrolled {
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: #2E2E2E;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    color: #fff !important;
+    font-weight: 600;
+    background: transparent;
+    border-bottom: 2px solid transparent;
+    transition: background 0.2s, color 0.2s, border-bottom 0.2s;
 }
 
-.nav-links a:hover {
-    color: #4A90E2;
+.nav-links a:hover,
+.nav-links a.active {
+    background: rgba(255,255,255,0.13);
+    color: #181A1B !important;
+    border-bottom: 2px solid #fff;
 }
 
 /* Active nav link */
@@ -85,6 +98,13 @@ nav.scrolled {
     color: #00C896;
     font-weight: 700;
     border-bottom: 2px solid #00C896;
+}
+
+body.dark-mode .nav-links a:hover,
+body.dark-mode .nav-links a.active {
+    background: rgba(24,26,27,0.13);
+    color: #181A1B !important;
+    border-bottom: 2px solid #181A1B;
 }
 
 .mobile-menu {
@@ -518,10 +538,45 @@ nav.scrolled {
 
 /* Footer Styles */
 footer {
-    padding: 2rem;
-    background: #2E2E2E;
-    color: white;
+    background: #4A90E2 !important; /* Match header/logo color */
+    color: #fff;
     text-align: center;
+    padding: 2.5rem 1rem 1.2rem 1rem;
+    font-size: 1rem;
+    border-top: 2px solid #2274e0;
+    box-shadow: 0 -4px 32px 0 rgba(74,144,226,0.06);
+    letter-spacing: 0.01em;
+    margin-top: 4rem;
+    transition: background 0.4s, color 0.4s;
+}
+
+footer p, footer span {
+    opacity: 0.85;
+}
+
+body.dark-mode footer {
+    background: #00C896 !important;
+    color: #181A1B;
+    border-top: 2px solid #00C896;
+    box-shadow: 0 -4px 32px 0 rgba(0,200,150,0.18);
+}
+
+footer a {
+    color: #fff;
+    text-decoration: underline dotted;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #181A1B;
+}
+
+body.dark-mode footer a {
+    color: #181A1B;
+}
+
+body.dark-mode footer a:hover {
+    color: #fff;
 }
 
 /* Dark Mode Styles */
@@ -566,6 +621,13 @@ body.dark-mode .skill-tag,
 body.dark-mode .project-tag {
     background: #181A1B;
     color: #00C896;
+}
+
+/* Make all about section text bright in dark mode */
+body.dark-mode .about-content,
+body.dark-mode .about-content *,
+body.dark-mode .about-content p {
+    color: #F4F6F8 !important;
 }
 
 /* Make secondary text more visible in dark mode */
@@ -801,80 +863,141 @@ body.dark-mode .contact-link:hover {
 
 /* --- Footer --- */
 footer {
-    background: transparent;
-    color: inherit;
-    border-top: 1px solid rgba(0,0,0,0.07);
+    background: #4A90E2 !important; /* Match header/logo color */
+    color: #fff;
+    text-align: center;
+    padding: 2.5rem 1rem 1.2rem 1rem;
+    font-size: 1rem;
+    border-top: 2px solid #2274e0;
+    box-shadow: 0 -4px 32px 0 rgba(74,144,226,0.06);
+    letter-spacing: 0.01em;
+    margin-top: 4rem;
+    transition: background 0.4s, color 0.4s;
 }
+
+footer p, footer span {
+    opacity: 0.85;
+}
+
 body.dark-mode footer {
-    background: transparent;
-    color: inherit;
-    border-top: 1px solid rgba(255,255,255,0.07);
+    background: #00C896 !important;
+    color: #181A1B;
+    border-top: 2px solid #00C896;
+    box-shadow: 0 -4px 32px 0 rgba(0,200,150,0.18);
 }
 
-/* --- About Image --- */
-.about-image {
-    background: linear-gradient(135deg, #F4F6F8, #E8F4F8);
-}
-body.dark-mode .about-image {
-    background: #222831;
+footer a {
+    color: #fff;
+    text-decoration: underline dotted;
+    transition: color 0.2s;
 }
 
-/* --- Projects Section BG --- */
-.projects {
-    background: transparent !important;
-}
-body.dark-mode .projects {
-    background: transparent !important;
+footer a:hover {
+    color: #181A1B;
 }
 
-/* --- Resume Section BG --- */
-.resume {
-    background: #F4F6F8;
-}
-body.dark-mode .resume {
-    background: #181A1B;
+body.dark-mode footer a {
+    color: #181A1B;
 }
 
-/* --- Nav --- */
+body.dark-mode footer a:hover {
+    color: #fff;
+}
+
+/* --- Improved Header/Nav Styles --- */
 nav {
-    background: rgba(255,255,255,0.95);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: rgba(250, 250, 253, 0.80);
+    backdrop-filter: blur(16px) saturate(180%);
+    box-shadow: 0 2px 16px rgba(74, 144, 226, 0.06);
+    border-bottom: 1px solid rgba(74,144,226,0.08);
+    z-index: 1000;
+    transition: background 0.4s, box-shadow 0.4s;
 }
+
 body.dark-mode nav {
-    background: rgba(34, 40, 49, 0.96);
+    background: #00C896 !important; /* Use dark logo color */
+    border-bottom: 2px solid #00C896;
+    box-shadow: 0 2px 16px rgba(0,200,150,0.18);
 }
 
-/* --- Remove any remaining hardcoded backgrounds in dark mode --- */
-.about,
-.projects,
-contact {
-    background: transparent !important;
-}
-body.dark-mode .about,
-body.dark-mode .projects,
-body.dark-mode .contact {
-    background: transparent !important;
+.logo {
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    color: #fff !important; /* Make logo white */
+    text-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    transition: color 0.3s;
 }
 
-/* Optional: Make sections transparent so the background shows through */
-section,
-.about,
-.projects,
-contact,
-.resume,
-.project-card,
-.data-viz {
-    background: transparent !important;
-    box-shadow: none;
-    border: none;
+body.dark-mode .logo {
+    color: #181A1B !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 
-/* Utility classes for spacing if needed */
-.text-center {
-    text-align: center !important;
+.nav-links a {
+    color: #fff !important;
+    font-weight: 600;
+    background: transparent;
+    border-bottom: 2px solid transparent;
+    transition: background 0.2s, color 0.2s, border-bottom 0.2s;
 }
-.mt-2 {
-    margin-top: 2rem !important;
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: rgba(255,255,255,0.13);
+    color: #181A1B !important;
+    border-bottom: 2px solid #fff;
 }
-.mb-2 {
-    margin-bottom: 2rem !important;
+
+body.dark-mode .nav-links a:hover,
+body.dark-mode .nav-links a.active {
+    background: rgba(24,26,27,0.13);
+    color: #181A1B !important;
+    border-bottom: 2px solid #181A1B;
+}
+
+/* --- Improved Footer Styles --- */
+footer {
+    background: #4A90E2 !important; /* Match header/logo color */
+    color: #fff;
+    text-align: center;
+    padding: 2.5rem 1rem 1.2rem 1rem;
+    font-size: 1rem;
+    border-top: 2px solid #2274e0;
+    box-shadow: 0 -4px 32px 0 rgba(74,144,226,0.06);
+    letter-spacing: 0.01em;
+    margin-top: 4rem;
+}
+
+footer p, footer span {
+    opacity: 0.85;
+}
+
+body.dark-mode footer {
+    background: #00C896 !important;
+    color: #181A1B;
+    border-top: 2px solid #00C896;
+    box-shadow: 0 -4px 32px 0 rgba(0,200,150,0.18);
+}
+
+footer a {
+    color: #fff;
+    text-decoration: underline dotted;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #181A1B;
+}
+
+body.dark-mode footer a {
+    color: #181A1B;
+}
+
+body.dark-mode footer a:hover {
+    color: #fff;
 }
