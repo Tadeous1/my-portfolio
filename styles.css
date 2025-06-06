@@ -26,7 +26,7 @@ body.dark-mode,
 html.dark-mode,
 body.dark-mode html {
     background: #181A1B !important;
-    color: #F4F6F8;
+    color: #F4F6F8 !important;
 }
 
 /* Universal section spacing */
@@ -68,18 +68,22 @@ nav.scrolled {
     text-shadow: 0 2px 8px rgba(0,0,0,0.10);
     transition: color 0.3s;
 }
-
 body.dark-mode .logo {
-    color: #181A1B !important;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    color: #00C896 !important;
+    text-shadow: 0 2px 8px rgba(0,200,150, 0.13);
 }
 
 /* Logo color when nav is open on mobile for better contrast */
 @media (max-width: 900px) {
+  nav.nav-open {
+    background: #4A90E2 !important;
+  }
   nav.nav-open .logo {
-    color: #4A90E2 !important;
+    color: #fff !important;
     text-shadow: 0 2px 8px rgba(74,144,226, 0.16);
-    transition: color 0.3s;
+  }
+  body.dark-mode nav.nav-open {
+    background: #181A1B !important;
   }
   body.dark-mode nav.nav-open .logo {
     color: #00C896 !important;
@@ -114,11 +118,14 @@ body.dark-mode .logo {
     border-bottom: 2px solid #00C896;
 }
 
+body.dark-mode .nav-links a {
+    color: #00C896 !important;
+}
 body.dark-mode .nav-links a:hover,
 body.dark-mode .nav-links a.active {
     background: rgba(24,26,27,0.13);
-    color: #181A1B !important;
-    border-bottom: 2px solid #181A1B;
+    color: #00C896 !important;
+    border-bottom: 2px solid #00C896;
 }
 
 .mobile-menu {
@@ -219,6 +226,15 @@ body.dark-mode .nav-links a.active {
     background: #4A90E2;
     color: white;
     transform: translateY(-2px);
+}
+
+body.dark-mode .btn-primary {
+    background: linear-gradient(135deg, #00C896, #4A90E2);
+    color: #fff !important;
+}
+body.dark-mode .btn-secondary {
+    border: 2px solid #00C896;
+    color: #00C896 !important;
 }
 
 /* Social Icons */
@@ -519,6 +535,15 @@ body.dark-mode .nav-links a.active {
     transform: translateY(-2px);
 }
 
+body.dark-mode .contact-link {
+    background: #222831;
+    color: #F4F6F8;
+}
+body.dark-mode .contact-link:hover {
+    background: #00C896;
+    color: #181A1B;
+}
+
 /* Resume Section Styles */
 .resume {
     background: #F4F6F8;
@@ -595,87 +620,25 @@ body.dark-mode footer a:hover {
 
 /* Dark Mode Styles */
 body.dark-mode {
-    background: #181A1B;
-    color: #F4F6F8;
+    background: #181A1B !important;
+    color: #F4F6F8 !important;
 }
 
+/* Card backgrounds in dark mode */
 body.dark-mode nav,
 body.dark-mode .project-card,
 body.dark-mode .data-viz {
-    background: rgba(34, 40, 49, 0.96) !important;
+    background: #181A1B !important;
     color: #F4F6F8;
     border: 1px solid rgba(74,144,226,0.08);
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25);
 }
 
-body.dark-mode .btn-primary,
-body.dark-mode .project-link.primary {
-    background: linear-gradient(135deg, #00C896, #4A90E2);
-    color: #fff;
-}
-
-body.dark-mode .btn-secondary,
-body.dark-mode .project-link.secondary {
-    background: transparent;
-    color: #F4F6F8;
-    border: 2px solid #00C896;
-}
-
-body.dark-mode .contact-link {
-    background: #222831;
-    color: #F4F6F8;
-}
-
-body.dark-mode .contact-link:hover {
-    background: #00C896;
-    color: #181A1B;
-}
-
+/* About/skills/project tags dark mode */
 body.dark-mode .skill-tag,
 body.dark-mode .project-tag {
-    background: #181A1B;
-    color: #00C896;
-}
-
-body.dark-mode .about-content,
-body.dark-mode .about-content *,
-body.dark-mode .about-content p {
-    color: #F4F6F8 !important;
-}
-
-body.dark-mode .about-content p,
-body.dark-mode .contact p,
-body.dark-mode .project-card p,
-body.dark-mode .section-title,
-body.dark-mode .project-card h3,
-body.dark-mode .contact h2 {
-    color: #F4F6F8 !important;
-}
-
-body.dark-mode .project-card p,
-body.dark-mode .about-content p,
-body.dark-mode .contact p {
-    color: #BFC9D1 !important;
-}
-
-body.dark-mode .project-card h3,
-body.dark-mode .section-title,
-body.dark-mode .contact h2 {
-    color: #fff !important;
-}
-
-body.dark-mode .skills .skill-tag,
-body.dark-mode .project-tags .project-tag {
-    color: #00C896 !important;
     background: #23272b !important;
-}
-
-body,
-nav,
-.project-card,
-.data-viz,
-footer {
-    transition: background 0.4s, color 0.4s;
+    color: #00C896 !important;
 }
 
 /* Responsive Design */
@@ -712,7 +675,7 @@ footer {
         position: absolute;
         top: 70px;
         right: 20px;
-        background: #fff;
+        background: #4A90E2 !important;
         flex-direction: column;
         gap: 1.1rem;
         padding: 1.2rem 2rem;
