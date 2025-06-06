@@ -40,124 +40,92 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Mobile menu toggle functionality
-const mobileMenu = document.querySelector('.mobile-menu');
+// Mobile menu toggle and nav-open logo color for mobile
+document.addEventListener("DOMContentLoaded", function () {
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const nav = document.querySelector('nav');
+    const navLinks = document.querySelector('.nav-links');
 
-function createMobileMenuOverlay() {
-    const overlay = document.createElement('div');
-    overlay.className = 'mobile-nav-overlay';
-    overlay.innerHTML = `
-        <div class="mobile-nav-content">
-            <div class="mobile-nav-header">
-                <div class="logo">ElishaInsights</div>
-                <button class="close-mobile-menu" aria-label="Close menu">&times;</button>
-            </div>
-            <ul class="mobile-nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    `;
-    const style = document.createElement('style');
-    style.textContent = `
-        .mobile-nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        .mobile-nav-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        .mobile-nav-content {
-            text-align: center;
-            max-width: 300px;
-            width: 100%;
-        }
-        .mobile-nav-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 3rem;
-            padding: 0 1rem;
-        }
-        .close-mobile-menu {
-            background: none;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #2E2E2E;
-        }
-        .mobile-nav-links {
-            list-style: none;
-            padding: 0;
-        }
-        .mobile-nav-links li {
-            margin: 1.5rem 0;
-        }
-        .mobile-nav-links a {
-            text-decoration: none;
-            color: #2E2E2E;
-            font-size: 1.2rem;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-        .mobile-nav-links a:hover {
-            color: #4A90E2;
-        }
-        @media (min-width: 769px) {
-            .mobile-nav-overlay {
-                display: none;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-    return overlay;
-}
+    if (mobileMenu && nav && navLinks) {
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            nav.classList.toggle('nav-open');
+        });
 
-if (mobileMenu) {
-    mobileMenu.addEventListener('click', function() {
-        let overlay = document.querySelector('.mobile-nav-overlay');
-        if (!overlay) {
-            overlay = createMobileMenuOverlay();
-            document.body.appendChild(overlay);
-
-            overlay.querySelector('.close-mobile-menu').addEventListener('click', function() {
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-
-            overlay.querySelectorAll('.mobile-nav-links a').forEach(link => {
-                link.addEventListener('click', function() {
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-            });
-
-            overlay.addEventListener('click', function(e) {
-                if (e.target === overlay) {
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
+        // Optionally: close menu when a nav link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 900) {
+                    navLinks.classList.remove('active');
+                    nav.classList.remove('nav-open');
                 }
             });
+        });
+    }
+
+    // Dark mode toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    themeToggle?.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        document.documentElement.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
         }
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
     });
-}
+
+    // Set initial mode from localStorage
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.documentElement.classList.add('dark-mode');
+    }
+
+    // Optional: Responsive nav shadow on scroll
+    window.addEventListener('scroll', () => {
+        if (nav) {
+            if (window.scrollY > 10) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        }
+    });
+
+    // Example: Chart.js hero chart (if present)
+    if (window.Chart && document.getElementById('heroChart')) {
+        const ctx = document.getElementById('heroChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Excel', 'Power BI', 'Python', 'VBA', 'DAX'],
+                datasets: [{
+                    label: 'Skill Level',
+                    data: [9, 8, 7, 7, 6],
+                    backgroundColor: [
+                        '#4A90E2', '#00C896', '#F4B942', '#EF476F', '#5C5470'
+                    ],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 10,
+                        ticks: { color: "#4A90E2", stepSize: 2 }
+                    },
+                    x: {
+                        ticks: { color: "#4A90E2" }
+                    }
+                }
+            }
+        });
+    }
+});
 
 // Typing animation for hero subtitle
 function typeWriter(element, text, speed = 100) {
@@ -243,51 +211,33 @@ document.querySelectorAll('.project-link').forEach(link => {
 });
 
 // ================================
-// Chart.js in Hero Data Viz
+// Chart.js in Hero Data Viz (fallback demo if not using main chart above)
 // ================================
 window.addEventListener('DOMContentLoaded', function() {
-  const ctx = document.getElementById('heroChart');
-  if (ctx) {
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-        datasets: [{
-          label: 'Sample Data',
-          data: [12, 19, 9, 17, 14],
-          borderColor: '#4A90E2',
-          backgroundColor: 'rgba(74,144,226,0.1)',
-          fill: true,
-          tension: 0.4
-        }]
-      },
-      options: {
-        plugins: {
-          legend: { display: false }
-        },
-        scales: {
-          x: { grid: { display: false } },
-          y: { grid: { color: '#eee' }, beginAtZero: true }
-        }
-      }
-    });
-  }
-
-  // ============ Theme Toggle (Light/Dark Mode) ============
-  const themeToggle = document.querySelector('.theme-toggle');
-  const body = document.body;
-  // Set initial mode from localStorage
-  if (localStorage.getItem('theme') === 'dark') {
-      body.classList.add('dark-mode');
-  }
-  if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
-          body.classList.toggle('dark-mode');
-          if (body.classList.contains('dark-mode')) {
-              localStorage.setItem('theme', 'dark');
-          } else {
-              localStorage.setItem('theme', 'light');
-          }
-      });
-  }
+    const ctx = document.getElementById('heroChart');
+    if (ctx && !ctx.chart) { // prevent double instantiation
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                datasets: [{
+                    label: 'Sample Data',
+                    data: [12, 19, 9, 17, 14],
+                    borderColor: '#4A90E2',
+                    backgroundColor: 'rgba(74,144,226,0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: { grid: { color: '#eee' }, beginAtZero: true }
+                }
+            }
+        });
+    }
 });
