@@ -49,7 +49,7 @@ function createMobileMenuOverlay() {
     overlay.innerHTML = `
         <div class="mobile-nav-content">
             <div class="mobile-nav-header">
-                <div class="logo">Jane Doe</div>
+                <div class="logo">ElishaInsights</div>
                 <button class="close-mobile-menu" aria-label="Close menu">&times;</button>
             </div>
             <ul class="mobile-nav-links">
@@ -276,7 +276,7 @@ window.addEventListener('DOMContentLoaded', function() {
   // ============ Theme Toggle (Light/Dark Mode) ============
   const themeToggle = document.querySelector('.theme-toggle');
   const body = document.body;
-  // Load theme preference if any
+  // Set initial mode from localStorage
   if (localStorage.getItem('theme') === 'dark') {
       body.classList.add('dark-mode');
   }
@@ -288,8 +288,6 @@ window.addEventListener('DOMContentLoaded', function() {
           } else {
               localStorage.setItem('theme', 'light');
           }
-          // Optionally reload to update chart colors (but not required for simple color schemes)
-          // location.reload();
       });
   }
 });
