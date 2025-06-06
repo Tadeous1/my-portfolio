@@ -5,12 +5,26 @@
     box-sizing: border-box;
 }
 
+html, body {
+    background: #FFFFFF;
+    color: #2E2E2E;
+    transition: background 0.4s, color 0.4s;
+}
+
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: #2E2E2E;
     background-color: #FFFFFF;
     overflow-x: hidden;
+}
+
+/* When dark mode is active, change both html and body backgrounds */
+body.dark-mode,
+html.dark-mode,
+body.dark-mode html {
+    background: #181A1B !important;
+    color: #F4F6F8;
 }
 
 /* Universal section spacing */
@@ -519,9 +533,10 @@ body.dark-mode {
 body.dark-mode nav,
 body.dark-mode .project-card,
 body.dark-mode .data-viz {
-    background: rgba(34, 40, 49, 0.92);
+    background: rgba(34, 40, 49, 0.96) !important;
     color: #F4F6F8;
     border: 1px solid rgba(74,144,226,0.08);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25);
 }
 
 body.dark-mode .btn-primary,
@@ -543,19 +558,42 @@ body.dark-mode .contact-link {
 }
 
 body.dark-mode .contact-link:hover {
-    background: #4A90E2;
-    color: #fff;
+    background: #00C896;
+    color: #181A1B;
 }
 
 body.dark-mode .skill-tag,
 body.dark-mode .project-tag {
-    background: #222831;
+    background: #181A1B;
     color: #00C896;
 }
 
-body.dark-mode footer {
-    background: #111417;
-    color: #F4F6F8;
+/* Make secondary text more visible in dark mode */
+body.dark-mode .about-content p,
+body.dark-mode .contact p,
+body.dark-mode .project-card p,
+body.dark-mode .section-title,
+body.dark-mode .project-card h3,
+body.dark-mode .contact h2 {
+    color: #F4F6F8 !important;
+}
+
+body.dark-mode .project-card p,
+body.dark-mode .about-content p,
+body.dark-mode .contact p {
+    color: #BFC9D1 !important;
+}
+
+body.dark-mode .project-card h3,
+body.dark-mode .section-title,
+body.dark-mode .contact h2 {
+    color: #fff !important;
+}
+
+body.dark-mode .skills .skill-tag,
+body.dark-mode .project-tags .project-tag {
+    color: #00C896 !important;
+    background: #23272b !important;
 }
 
 /* Ensure smooth transitions for theme change */
@@ -686,6 +724,148 @@ footer {
     .resume {
         padding: 1.3rem 0.5rem;
     }
+}
+
+/* --- Section and Card Backgrounds --- */
+section,
+.about,
+.projects,
+contact,
+.resume {
+    background: transparent !important;
+    box-shadow: none;
+    border: none;
+}
+
+/* --- Card and Data Viz backgrounds --- */
+.project-card,
+.data-viz {
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10);
+    border: 1px solid rgba(255,255,255,0.18);
+}
+body.dark-mode .project-card,
+body.dark-mode .data-viz {
+    background: rgba(34, 40, 49, 0.96) !important;
+    color: #F4F6F8;
+    border: 1px solid rgba(74,144,226,0.08);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25);
+}
+
+/* --- Skill/Project Tags --- */
+.skill-tag, .project-tag {
+    background: #F4F6F8;
+    color: #4A90E2;
+}
+body.dark-mode .skill-tag,
+body.dark-mode .project-tag {
+    background: #181A1B;
+    color: #00C896;
+}
+
+/* --- Social Icons --- */
+.social-icons a {
+    background: #eaf1fb;
+    color: #2274e0;
+}
+.social-icons a:hover {
+    background: #2274e0;
+    color: #fff;
+}
+body.dark-mode .social-icons a {
+    background: #222831;
+    color: #00C896;
+}
+body.dark-mode .social-icons a:hover {
+    background: #00C896;
+    color: #181A1B;
+}
+
+/* --- Contact Links --- */
+.contact-link {
+    background: #F4F6F8;
+    color: #2E2E2E;
+}
+.contact-link:hover {
+    background: #4A90E2;
+    color: #fff;
+}
+body.dark-mode .contact-link {
+    background: #222831;
+    color: #F4F6F8;
+}
+body.dark-mode .contact-link:hover {
+    background: #00C896;
+    color: #181A1B;
+}
+
+/* --- Footer --- */
+footer {
+    background: transparent;
+    color: inherit;
+    border-top: 1px solid rgba(0,0,0,0.07);
+}
+body.dark-mode footer {
+    background: transparent;
+    color: inherit;
+    border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+/* --- About Image --- */
+.about-image {
+    background: linear-gradient(135deg, #F4F6F8, #E8F4F8);
+}
+body.dark-mode .about-image {
+    background: #222831;
+}
+
+/* --- Projects Section BG --- */
+.projects {
+    background: transparent !important;
+}
+body.dark-mode .projects {
+    background: transparent !important;
+}
+
+/* --- Resume Section BG --- */
+.resume {
+    background: #F4F6F8;
+}
+body.dark-mode .resume {
+    background: #181A1B;
+}
+
+/* --- Nav --- */
+nav {
+    background: rgba(255,255,255,0.95);
+}
+body.dark-mode nav {
+    background: rgba(34, 40, 49, 0.96);
+}
+
+/* --- Remove any remaining hardcoded backgrounds in dark mode --- */
+.about,
+.projects,
+contact {
+    background: transparent !important;
+}
+body.dark-mode .about,
+body.dark-mode .projects,
+body.dark-mode .contact {
+    background: transparent !important;
+}
+
+/* Optional: Make sections transparent so the background shows through */
+section,
+.about,
+.projects,
+contact,
+.resume,
+.project-card,
+.data-viz {
+    background: transparent !important;
+    box-shadow: none;
+    border: none;
 }
 
 /* Utility classes for spacing if needed */
