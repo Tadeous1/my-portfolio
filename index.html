@@ -72,15 +72,9 @@
                     </div>
                 </div>
                 <div class="hero-visual">
+                   <!-- In your index.html hero section -->
                     <div class="data-viz">
-                        <div class="chart-bars">
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                        </div>
-                        <div class="chart-line"></div>
+                        <canvas id="heroChart" width="400" height="300" aria-label="Sample chart" role="img"></canvas>
                     </div>
                 </div>
             </div>
@@ -176,7 +170,7 @@
             <div class="contact-container">
                 <h2>Contact ElishaInsights</h2>
                 <p>
-                    Interested in collaborating or have a data-driven project in mind? 
+                    Would you be interested in collaborating or have a data-driven project in mind? 
                     Let’s work together to create solutions for sustainability, education, or community impact.
                 </p>
                 <div class="contact-links">
@@ -197,6 +191,9 @@
     <footer>
         <p>&copy; 2025 ElishaInsights. All rights reserved.</p>
     </footer>
+    <!-- Add Chart.js before your script -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
+    
 </body>
 </html>
