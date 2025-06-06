@@ -1001,3 +1001,27 @@ body.dark-mode footer a {
 body.dark-mode footer a:hover {
     color: #fff;
 }
+
+/* --- Improve Social Icons Visibility in Hero Section --- */
+.hero .social-icons a {
+    background: #4A90E2;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(74,144,226,0.10);
+    opacity: 1;
+    border: none;
+}
+
+.hero .social-icons a:hover {
+    background: #00C896;
+    color: #181A1B;
+    box-shadow: 0 4px 16px rgba(0,200,150,0.18);
+    transform: translateY(-2px) scale(1.08);
+}
+
+.hero .social-icons svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    stroke: currentColor;
+    display: block;
+}
