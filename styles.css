@@ -472,6 +472,63 @@ footer {
     text-align: center;
 }
 
+/* Dark Mode Styles */
+body.dark-mode {
+    background: #181A1B;
+    color: #F4F6F8;
+}
+
+body.dark-mode nav,
+body.dark-mode .project-card,
+body.dark-mode .data-viz {
+    background: rgba(34, 40, 49, 0.92);
+    color: #F4F6F8;
+    border: 1px solid rgba(74,144,226,0.08);
+}
+
+body.dark-mode .btn-primary,
+body.dark-mode .project-link.primary {
+    background: linear-gradient(135deg, #00C896, #4A90E2);
+    color: #fff;
+}
+
+body.dark-mode .btn-secondary,
+body.dark-mode .project-link.secondary {
+    background: transparent;
+    color: #F4F6F8;
+    border: 2px solid #00C896;
+}
+
+body.dark-mode .contact-link {
+    background: #222831;
+    color: #F4F6F8;
+}
+
+body.dark-mode .contact-link:hover {
+    background: #4A90E2;
+    color: #fff;
+}
+
+body.dark-mode .skill-tag,
+body.dark-mode .project-tag {
+    background: #222831;
+    color: #00C896;
+}
+
+body.dark-mode footer {
+    background: #111417;
+    color: #F4F6F8;
+}
+
+/* Ensure smooth transitions for theme change */
+body,
+nav,
+.project-card,
+.data-viz,
+footer {
+    transition: background 0.4s, color 0.4s;
+}
+
 /* Responsive Design */
 @media (max-width: 1000px) {
     .hero-container {
