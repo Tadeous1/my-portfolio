@@ -41,7 +41,7 @@ nav {
     top: 0;
     width: 100%;
     padding: 1rem 2rem;
-    background: #4A90E2 !important; /* Use logo color */
+    background: #4A90E2 !important;
     box-shadow: 0 2px 16px rgba(74, 144, 226, 0.10);
     border-bottom: 2px solid #2274e0;
     z-index: 1000;
@@ -64,7 +64,7 @@ nav.scrolled {
     font-size: 1.6rem;
     font-weight: 900;
     letter-spacing: 0.5px;
-    color: #fff !important; /* Make logo white */
+    color: #fff !important;
     text-shadow: 0 2px 8px rgba(0,0,0,0.10);
     transition: color 0.3s;
 }
@@ -72,6 +72,19 @@ nav.scrolled {
 body.dark-mode .logo {
     color: #181A1B !important;
     text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+/* Logo color when nav is open on mobile for better contrast */
+@media (max-width: 900px) {
+  nav.nav-open .logo {
+    color: #4A90E2 !important;
+    text-shadow: 0 2px 8px rgba(74,144,226, 0.16);
+    transition: color 0.3s;
+  }
+  body.dark-mode nav.nav-open .logo {
+    color: #00C896 !important;
+    text-shadow: 0 2px 8px rgba(0,200,150, 0.13);
+  }
 }
 
 .nav-links {
@@ -95,7 +108,6 @@ body.dark-mode .logo {
     border-bottom: 2px solid #fff;
 }
 
-/* Active nav link */
 .nav-links a.active {
     color: #00C896;
     font-weight: 700;
@@ -540,7 +552,7 @@ body.dark-mode .nav-links a.active {
 
 /* Footer Styles */
 footer {
-    background: #4A90E2 !important; /* Match header/logo color */
+    background: #4A90E2 !important;
     color: #fff;
     text-align: center;
     padding: 2.5rem 1rem 1.2rem 1rem;
@@ -625,14 +637,12 @@ body.dark-mode .project-tag {
     color: #00C896;
 }
 
-/* Make all about section text bright in dark mode */
 body.dark-mode .about-content,
 body.dark-mode .about-content *,
 body.dark-mode .about-content p {
     color: #F4F6F8 !important;
 }
 
-/* Make secondary text more visible in dark mode */
 body.dark-mode .about-content p,
 body.dark-mode .contact p,
 body.dark-mode .project-card p,
@@ -660,7 +670,6 @@ body.dark-mode .project-tags .project-tag {
     background: #23272b !important;
 }
 
-/* Ensure smooth transitions for theme change */
 body,
 nav,
 .project-card,
@@ -759,7 +768,6 @@ footer {
     }
 }
 
-/* Extra Responsive Fixes for Hero & Social */
 @media (max-width: 600px) {
     .hero-container {
         display: flex;
@@ -878,308 +886,5 @@ footer {
     .hero .social-icons {
         gap: 0.2rem;
         margin-top: 0.5rem;
-    }
-}
-
-/* --- Section and Card Backgrounds --- */
-section,
-.about,
-.projects,
-contact,
-.resume {
-    background: transparent !important;
-    box-shadow: none;
-    border: none;
-}
-
-/* --- Card and Data Viz backgrounds --- */
-.project-card,
-.data-viz {
-    background: rgba(255,255,255,0.95);
-    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10);
-    border: 1px solid rgba(255,255,255,0.18);
-}
-body.dark-mode .project-card,
-body.dark-mode .data-viz {
-    background: rgba(34, 40, 49, 0.96) !important;
-    color: #F4F6F8;
-    border: 1px solid rgba(74,144,226,0.08);
-    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25);
-}
-
-/* --- Skill/Project Tags --- */
-.skill-tag, .project-tag {
-    background: #F4F6F8;
-    color: #4A90E2;
-}
-body.dark-mode .skill-tag,
-body.dark-mode .project-tag {
-    background: #181A1B;
-    color: #00C896;
-}
-
-/* --- Social Icons --- */
-.social-icons a {
-    background: #eaf1fb;
-    color: #2274e0;
-}
-.social-icons a:hover {
-    background: #2274e0;
-    color: #fff;
-}
-body.dark-mode .social-icons a {
-    background: #222831;
-    color: #00C896;
-}
-body.dark-mode .social-icons a:hover {
-    background: #00C896;
-    color: #181A1B;
-}
-
-/* --- Contact Links --- */
-.contact-link {
-    background: #F4F6F8;
-    color: #2E2E2E;
-}
-.contact-link:hover {
-    background: #4A90E2;
-    color: #fff;
-}
-body.dark-mode .contact-link {
-    background: #222831;
-    color: #F4F6F8;
-}
-body.dark-mode .contact-link:hover {
-    background: #00C896;
-    color: #181A1B;
-}
-
-/* --- Footer --- */
-footer {
-    background: #4A90E2 !important; /* Match header/logo color */
-    color: #fff;
-    text-align: center;
-    padding: 2.5rem 1rem 1.2rem 1rem;
-    font-size: 1rem;
-    border-top: 2px solid #2274e0;
-    box-shadow: 0 -4px 32px 0 rgba(74,144,226,0.06);
-    letter-spacing: 0.01em;
-    margin-top: 4rem;
-    transition: background 0.4s, color 0.4s;
-}
-
-footer p, footer span {
-    opacity: 0.85;
-}
-
-body.dark-mode footer {
-    background: #00C896 !important;
-    color: #181A1B;
-    border-top: 2px solid #00C896;
-    box-shadow: 0 -4px 32px 0 rgba(0,200,150,0.18);
-}
-
-footer a {
-    color: #fff;
-    text-decoration: underline dotted;
-    transition: color 0.2s;
-}
-
-footer a:hover {
-    color: #181A1B;
-}
-
-body.dark-mode footer a {
-    color: #181A1B;
-}
-
-body.dark-mode footer a:hover {
-    color: #fff;
-}
-
-/* --- Improved Header/Nav Styles --- */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 1rem 2rem;
-    background: rgba(250, 250, 253, 0.80);
-    backdrop-filter: blur(16px) saturate(180%);
-    box-shadow: 0 2px 16px rgba(74, 144, 226, 0.06);
-    border-bottom: 1px solid rgba(74,144,226,0.08);
-    z-index: 1000;
-    transition: background 0.4s, box-shadow 0.4s;
-}
-
-body.dark-mode nav {
-    background: #00C896 !important; /* Use dark logo color */
-    border-bottom: 2px solid #00C896;
-    box-shadow: 0 2px 16px rgba(0,200,150,0.18);
-}
-
-.logo {
-    font-size: 1.6rem;
-    font-weight: 900;
-    letter-spacing: 0.5px;
-    color: #fff !important; /* Make logo white */
-    text-shadow: 0 2px 8px rgba(0,0,0,0.10);
-    transition: color 0.3s;
-}
-
-body.dark-mode .logo {
-    color: #181A1B !important;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.12);
-}
-
-.nav-links a {
-    color: #fff !important;
-    font-weight: 600;
-    background: transparent;
-    border-bottom: 2px solid transparent;
-    transition: background 0.2s, color 0.2s, border-bottom 0.2s;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    background: rgba(255,255,255,0.13);
-    color: #181A1B !important;
-    border-bottom: 2px solid #fff;
-}
-
-body.dark-mode .nav-links a:hover,
-body.dark-mode .nav-links a.active {
-    background: rgba(24,26,27,0.13);
-    color: #181A1B !important;
-    border-bottom: 2px solid #181A1B;
-}
-
-/* --- Improved Footer Styles --- */
-footer {
-    background: #4A90E2 !important; /* Match header/logo color */
-    color: #fff;
-    text-align: center;
-    padding: 2.5rem 1rem 1.2rem 1rem;
-    font-size: 1rem;
-    border-top: 2px solid #2274e0;
-    box-shadow: 0 -4px 32px 0 rgba(74,144,226,0.06);
-    letter-spacing: 0.01em;
-    margin-top: 4rem;
-}
-
-footer p, footer span {
-    opacity: 0.85;
-}
-
-body.dark-mode footer {
-    background: #00C896 !important;
-    color: #181A1B;
-    border-top: 2px solid #00C896;
-    box-shadow: 0 -4px 32px 0 rgba(0,200,150,0.18);
-}
-
-footer a {
-    color: #fff;
-    text-decoration: underline dotted;
-    transition: color 0.2s;
-}
-
-footer a:hover {
-    color: #181A1B;
-}
-
-body.dark-mode footer a {
-    color: #181A1B;
-}
-
-body.dark-mode footer a:hover {
-    color: #fff;
-}
-
-/* --- Improve Social Icons Visibility in Hero Section --- */
-.hero .social-icons a {
-    background: #4A90E2;
-    color: #fff;
-    box-shadow: 0 2px 8px rgba(74,144,226,0.10);
-    opacity: 1;
-    border: none;
-}
-
-.hero .social-icons a:hover {
-    background: #00C896;
-    color: #181A1B;
-    box-shadow: 0 4px 16px rgba(0,200,150,0.18);
-    transform: translateY(-2px) scale(1.08);
-}
-
-.hero .social-icons svg {
-    width: 24px;
-    height: 24px;
-    fill: currentColor;
-    stroke: currentColor;
-    display: block;
-}
-
-/* --- Ensure smooth transitions for theme change --- */
-body,
-nav,
-.project-card,
-.data-viz,
-footer {
-    transition: background 0.4s, color 0.4s;
-}   
-
-/* Responsive social icons for hero section */
-.hero .social-icons {
-    gap: 0.7rem;
-    margin-top: 1.2rem;
-}
-
-.hero .social-icons a {
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    min-height: 44px;
-    font-size: 1.3rem;
-    background: #4A90E2;
-    color: #fff;
-    box-shadow: 0 2px 8px rgba(74,144,226,0.10);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: background 0.2s, color 0.2s, transform 0.2s;
-    opacity: 1;
-}
-
-.hero .social-icons a:hover {
-    background: #00C896;
-    color: #181A1B;
-    transform: translateY(-2px) scale(1.08);
-}
-
-.hero .social-icons svg {
-    width: 24px;
-    height: 24px;
-    fill: currentColor;
-    stroke: currentColor;
-    display: block;
-}
-
-/* Make social icons smaller and adjust spacing on small screens */
-@media (max-width: 520px) {
-    .hero .social-icons a {
-        width: 34px;
-        height: 34px;
-        min-width: 34px;
-        min-height: 34px;
-        font-size: 1rem;
-    }
-    .hero .social-icons svg {
-        width: 18px;
-        height: 18px;
-    }
-    .hero .social-icons {
-        gap: 0.4rem;
-        margin-top: 1rem;
     }
 }
