@@ -241,3 +241,35 @@ document.querySelectorAll('.project-link').forEach(link => {
         }
     });
 });
+
+// ...your existing JS above...
+
+window.addEventListener('DOMContentLoaded', function() {
+  // ...your other initialization code...
+  const ctx = document.getElementById('heroChart');
+  if (ctx) {
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+        datasets: [{
+          label: 'Sample Data',
+          data: [12, 19, 9, 17, 14],
+          borderColor: '#4A90E2',
+          backgroundColor: 'rgba(74,144,226,0.1)',
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          x: { grid: { display: false } },
+          y: { grid: { color: '#eee' }, beginAtZero: true }
+        }
+      }
+    });
+  }
+});
