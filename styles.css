@@ -9,6 +9,8 @@ html, body {
     background: #FFFFFF;
     color: #2E2E2E;
     transition: background 0.4s, color 0.4s;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 body {
@@ -757,6 +759,82 @@ footer {
     }
 }
 
+/* Extra Responsive Fixes for Hero & Social */
+@media (max-width: 600px) {
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+        text-align: center;
+        padding: 0 0.3rem;
+    }
+    .hero-visual {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1.2rem;
+    }
+    .data-viz {
+        width: 100%;
+        min-width: unset;
+        max-width: 100vw;
+        height: auto;
+        min-height: 180px;
+        max-height: 250px;
+        padding: 0.5rem;
+    }
+    #heroChart {
+        width: 100% !important;
+        height: 200px !important;
+        max-width: 100vw;
+        max-height: 200px;
+    }
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+    .hero-content .subtitle {
+        font-size: 1rem;
+    }
+    .hero .social-icons {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        margin-top: 0.7rem;
+    }
+    .hero .social-icons a {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        min-height: 32px;
+        font-size: 1rem;
+        margin: 0 2px;
+    }
+    .hero .social-icons svg {
+        width: 16px;
+        height: 16px;
+    }
+    .cta-buttons {
+        flex-direction: column;
+        gap: 0.6rem;
+        width: 100%;
+        align-items: center;
+    }
+    .btn, .btn-primary, .btn-secondary {
+        width: 100%;
+        min-width: 0;
+        padding: 0.7rem 0;
+        font-size: 1rem;
+    }
+    section {
+        padding: 2.5rem 0.5rem;
+    }
+    html, body {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+}
+
 @media (max-width: 520px) {
     nav {
         padding: 0.6rem 0.3rem;
@@ -785,6 +863,21 @@ footer {
     }
     .resume {
         padding: 1.3rem 0.5rem;
+    }
+    .hero .social-icons a {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        min-height: 28px;
+        font-size: 0.9rem;
+    }
+    .hero .social-icons svg {
+        width: 14px;
+        height: 14px;
+    }
+    .hero .social-icons {
+        gap: 0.2rem;
+        margin-top: 0.5rem;
     }
 }
 
