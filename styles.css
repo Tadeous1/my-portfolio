@@ -1025,3 +1025,68 @@ body.dark-mode footer a:hover {
     stroke: currentColor;
     display: block;
 }
+
+/* --- Ensure smooth transitions for theme change --- */
+body,
+nav,
+.project-card,
+.data-viz,
+footer {
+    transition: background 0.4s, color 0.4s;
+}   
+
+/* Responsive social icons for hero section */
+.hero .social-icons {
+    gap: 0.7rem;
+    margin-top: 1.2rem;
+}
+
+.hero .social-icons a {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 1.3rem;
+    background: #4A90E2;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(74,144,226,0.10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    opacity: 1;
+}
+
+.hero .social-icons a:hover {
+    background: #00C896;
+    color: #181A1B;
+    transform: translateY(-2px) scale(1.08);
+}
+
+.hero .social-icons svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    stroke: currentColor;
+    display: block;
+}
+
+/* Make social icons smaller and adjust spacing on small screens */
+@media (max-width: 520px) {
+    .hero .social-icons a {
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        min-height: 34px;
+        font-size: 1rem;
+    }
+    .hero .social-icons svg {
+        width: 18px;
+        height: 18px;
+    }
+    .hero .social-icons {
+        gap: 0.4rem;
+        margin-top: 1rem;
+    }
+}
