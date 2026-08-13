@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citi Bikes Data Analysis – ElishaInsights</title>
+    <meta name="description" content="A real-data Citi Bike trip-history case study with interactive charts and transparent source notes.">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="case-study-page">
+    <header>
+        <nav id="navbar" class="navbar">
+            <div class="nav-container">
+                <a href="index.html#home" class="logo" aria-label="Home">ElishaInsights</a>
+                <ul id="primary-navigation" class="nav-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                </ul>
+                <button type="button" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+                    <svg width="24" height="24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/></svg>
+                </button>
+                <button type="button" class="mobile-menu" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="case-study-main">
+        <section class="case-study-hero">
+            <div>
+                <p class="eyebrow">REAL-DATA CASE STUDY · PUBLIC SOURCE</p>
+                <h1>Citi Bikes Data Analysis</h1>
+                <p class="case-study-lede">A transparent dashboard-style exploration of a verified Citi Bike trip-history extract, focused on ride volume, member mix, timing, duration, and station activity.</p>
+                <div class="case-study-actions">
+                    <a href="#dashboard" class="btn btn-primary">Explore Dashboard</a>
+                    <a href="projects.html" class="btn btn-secondary">Back to Projects</a>
+                </div>
+            </div>
+            <aside class="case-study-source-card">
+                <p class="source-label">SOURCE &amp; SCOPE</p>
+                <h2>Official Citi Bike trip history</h2>
+                <p>Jersey City, New Jersey · <span data-window>2015-09-21 → 2015-09-30</span></p>
+                <a href="https://citibikenyc.com/system-data" target="_blank" rel="noopener noreferrer">Read the source notes ↗</a>
+            </aside>
+        </section>
+
+        <section class="metrics-grid" aria-label="Case study metrics">
+            <article class="metric-card"><span>Verified rides</span><strong data-metric="rides">6,668</strong><small>records in the extract</small></article>
+            <article class="metric-card"><span>Observed days</span><strong data-metric="days">10</strong><small>not a full month</small></article>
+            <article class="metric-card"><span>Median ride</span><strong data-metric="median">8.95 min</strong><small>trip duration</small></article>
+            <article class="metric-card"><span>Subscriber share</span><strong data-metric="subscriber-share">79.4%</strong><small>of observed rides</small></article>
+        </section>
+
+        <p class="dashboard-error" data-dashboard-error hidden></p>
+
+        <section id="dashboard" class="dashboard-section">
+            <div class="section-heading-row">
+                <div><p class="eyebrow">INTERACTIVE DASHBOARD</p><h2>What the extract says</h2></div>
+                <p class="dashboard-note">Use the chart tooltips to inspect exact values.</p>
+            </div>
+            <div class="dashboard-grid dashboard-grid-top">
+                <article class="chart-card chart-card-wide"><div class="chart-card-heading"><h3>Rides by weekday</h3><span>Count of starts</span></div><div class="chart-wrap"><canvas id="weekdayChart" aria-label="Bar chart showing Citi Bike rides by weekday" role="img"></canvas></div></article>
+                <article class="chart-card"><div class="chart-card-heading"><h3>Member mix</h3><span>Subscriber vs customer</span></div><div class="chart-wrap chart-wrap-doughnut"><canvas id="memberMixChart" aria-label="Doughnut chart showing subscriber and customer ride mix" role="img"></canvas></div></article>
+            </div>
+            <div class="dashboard-grid">
+                <article class="chart-card"><div class="chart-card-heading"><h3>Top start stations</h3><span>Most frequent origins</span></div><div class="chart-wrap chart-wrap-station"><canvas id="stationChart" aria-label="Horizontal bar chart showing top Citi Bike start stations" role="img"></canvas></div></article>
+                <article class="chart-card"><div class="chart-card-heading"><h3>Trip-duration bands</h3><span>Median tells a different story than average</span></div><div class="chart-wrap"><canvas id="durationChart" aria-label="Bar chart showing trips grouped by duration" role="img"></canvas></div></article>
+            </div>
+        </section>
+
+        <section class="insight-grid" aria-labelledby="insights-heading">
+            <div class="section-heading-row"><div><p class="eyebrow">READOUT</p><h2 id="insights-heading">Three useful signals</h2></div></div>
+            <article class="insight-card"><span>01</span><h3>Tuesday leads the observed weekdays</h3><p>Tuesday recorded 1,255 rides in this extract, ahead of Wednesday at 1,239. That is a descriptive signal, not a general seasonal conclusion.</p></article>
+            <article class="insight-card"><span>02</span><h3>Most rides are short</h3><p>3,670 of 6,668 rides fall in the 0–10 minute band. The 8.95-minute median is more representative of the typical ride than the long-tail average.</p></article>
+            <article class="insight-card"><span>03</span><h3>Grove St PATH is the strongest origin</h3><p>Grove St PATH appears as the leading start station with 731 starts, followed by Exchange Place at 538.</p></article>
+        </section>
+
+        <section class="method-section" aria-labelledby="method-heading">
+            <p class="eyebrow">METHOD &amp; LIMITATIONS</p>
+            <h2 id="method-heading">How this dashboard was built</h2>
+            <div class="method-grid">
+                <p><strong>Source.</strong> Official Citi Bike trip-history CSV extract from the public S3 tripdata index. The extract contains 15 columns, including timestamps, stations, coordinates, duration, and user type.</p>
+                <p><strong>Processing.</strong> Parsed timestamps, grouped rides by weekday, member type, start station, and duration band, then stored the verified aggregates in a small JSON file for the browser dashboard.</p>
+                <p><strong>Limitations.</strong> This file contains records observed from September 21–30, 2015. It is an educational public-data demonstration and should not be described as a complete September monthly analysis.</p>
+            </div>
+            <div class="source-footer"><a href="https://s3.amazonaws.com/tripdata/JC-201509-citibike-tripdata.csv.zip" target="_blank" rel="noopener noreferrer">Download the source CSV extract ↗</a><span>Built with HTML, CSS, JavaScript, and Chart.js.</span></div>
+        </section>
+    </main>
+
+    <footer><p>&copy; 2025 ElishaInsights. All rights reserved.</p></footer>
+    <script src="script.js"></script>
+    <script src="citi-bikes.js"></script>
+</body>
+</html>

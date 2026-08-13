@@ -10,6 +10,7 @@
         const navLinks = document.querySelector('.nav-links');
         const themeToggle = document.querySelector('.theme-toggle');
         const scrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
+        let heroChart = null;
 
         const updateScrolledState = () => {
             if (navbar) {
@@ -63,6 +64,12 @@
             document.body.classList.toggle('dark-mode', isDark);
             document.documentElement.classList.toggle('dark-mode', isDark);
             themeToggle?.setAttribute('aria-pressed', String(isDark));
+            if (heroChart) {
+                const chartTextColor = isDark ? '#99F6E4' : '#0F766E';
+                heroChart.options.scales.y.ticks.color = chartTextColor;
+                heroChart.options.scales.x.ticks.color = chartTextColor;
+                heroChart.update('none');
+            }
             if (persist) {
                 localStorage.setItem('theme', isDark ? 'dark' : 'light');
             }
@@ -157,14 +164,15 @@
 
         const chartCanvas = document.getElementById('heroChart');
         if (chartCanvas && window.Chart && !window.Chart.getChart(chartCanvas)) {
-            new window.Chart(chartCanvas, {
+            const chartTextColor = document.body.classList.contains('dark-mode') ? '#99F6E4' : '#0F766E';
+            heroChart = new window.Chart(chartCanvas, {
                 type: 'bar',
                 data: {
                     labels: ['Excel', 'Power BI', 'Python', 'VBA', 'DAX'],
                     datasets: [{
                         label: 'Skill Level',
                         data: [9, 8, 7, 7, 6],
-                        backgroundColor: ['#4A90E2', '#00C896', '#F4B942', '#EF476F', '#5C5470'],
+                        backgroundColor: ['#0F766E', '#14B8A6', '#38BDF8', '#F59E0B', '#64748B'],
                         borderRadius: 8,
                         borderSkipped: false
                     }]
@@ -175,8 +183,8 @@
                     animation: prefersReducedMotion ? false : undefined,
                     plugins: { legend: { display: false } },
                     scales: {
-                        y: { beginAtZero: true, max: 10, ticks: { color: '#4A90E2', stepSize: 2 } },
-                        x: { ticks: { color: '#4A90E2' } }
+                        y: { beginAtZero: true, max: 10, ticks: { color: chartTextColor, stepSize: 2 } },
+                        x: { ticks: { color: chartTextColor } }
                     }
                 }
             });

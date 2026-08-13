@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume – ElishaInsights</title>
+    <title>Resume – Elisha Oguntade</title>
     <meta name="description" content="Resume of Elisha Oguntade, a data analyst focused on sustainability and environmental data.">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <header>
+<body class="resume-page">
+    <header class="no-print">
         <nav id="navbar" class="navbar">
             <div class="nav-container">
                 <a href="index.html#home" class="logo" aria-label="Home">ElishaInsights</a>
@@ -19,7 +19,7 @@
                     <li><a href="resume.html" class="active">Resume</a></li>
                 </ul>
                 <button type="button" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
-                    <svg width="24" height="24" fill="none"><circle cx="12" cy="12" r="10" stroke="#333" stroke-width="2"/></svg>
+                    <svg width="24" height="24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/></svg>
                 </button>
                 <button type="button" class="mobile-menu" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false">
                     <span></span><span></span><span></span>
@@ -27,121 +27,87 @@
             </div>
         </nav>
     </header>
-    <main>
-        <section class="resume fade-in" style="padding-top:6rem; max-width:800px; margin:auto;">
-            <h2>Resume</h2>
-            <div style="margin-bottom:2rem;">
-                <h3>Elisha Oguntade</h3>
-                <div>Ogbomoso, Oyo State, Nigeria</div>
-                <div>
-                    📧 <a href="mailto:elishao2000@gmail.com">elishao2000@gmail.com</a> &nbsp;|&nbsp;
-                    📞 <a href="tel:+2348151404460">+234 815 140 4460</a>
+
+    <main class="resume-main">
+        <div class="resume-actions no-print">
+            <p>Reference-informed visual portfolio CV</p>
+            <a href="Elisha%20Oguntade.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Download PDF</a>
+        </div>
+
+        <article class="resume-sheet" aria-labelledby="resume-name">
+            <header class="resume-header">
+                <h1 id="resume-name">ELISHA OGUNTADE</h1>
+                <p class="resume-role">Data Analyst &amp; Environmental Data Enthusiast</p>
+                <div class="resume-contact" aria-label="Contact information">
+                    <a href="tel:+2348151404460">+234 815 140 4460</a>
+                    <a href="mailto:elishao2000@gmail.com">elishao2000@gmail.com</a>
+                    <span>Ogbomoso, Oyo State, Nigeria</span>
                 </div>
-                <div>
-                    <a href="https://www.linkedin.com/in/oguntade-elisha" target="_blank" rel="noopener noreferrer">LinkedIn</a> &nbsp;|&nbsp;
-                    <a href="https://github.com/tadeous1" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </header>
+
+            <section class="resume-section" aria-labelledby="about-heading">
+                <h2 id="about-heading">About Me</h2>
+                <p>Detail-oriented and environmentally conscious data analyst with hands-on experience in Excel, Power BI, data storytelling, and sustainability-focused research. I transform complex datasets into clear dashboards and actionable insights that support education, climate literacy, and evidence-based decision-making.</p>
+            </section>
+
+            <section class="resume-section" aria-labelledby="education-heading">
+                <h2 id="education-heading">Education</h2>
+                <div class="resume-entry">
+                    <div class="resume-entry-heading">
+                        <h3>B.Tech. in Information Systems</h3>
+                        <span>Graduated: November 2025</span>
+                    </div>
+                    <p class="resume-org">Ladoke Akintola University of Technology (LAUTECH), Nigeria</p>
+                    <p class="resume-detail">Relevant courses: Data Analytics, Environmental Informatics, Java Programming, Database Systems</p>
                 </div>
-            </div>
+            </section>
 
-            <h4>Professional Summary</h4>
-            <p>
-                Detail-oriented and environmentally conscious data analyst with hands-on experience in Excel, Power BI, and data storytelling.
-                Adept at analyzing complex datasets, building insightful dashboards, and automating reports. Passionate about sustainability,
-                digital literacy, and transforming data into actionable solutions aligned with the UN SDGs. Known for strong analytical thinking,
-                stakeholder engagement, and collaborative project delivery.
-            </p>
-
-            <h4>Work Experience</h4>
-            <ul>
-                <li>
-                    <strong>Data Analyst (Freelance / Academic Projects)</strong><br>
-                    <em>Self-Employed / LAUTECH Academic Projects – Ogbomoso, Nigeria</em><br>
-                    <em>Jan 2024 – Present</em>
+            <section class="resume-section" aria-labelledby="experience-heading">
+                <h2 id="experience-heading">Work Experience</h2>
+                <div class="resume-entry">
+                    <div class="resume-entry-heading">
+                        <h3>Data Analyst <span>(Freelance / Academic Projects)</span></h3>
+                        <span>Jan 2024 – Present</span>
+                    </div>
+                    <p class="resume-org">Self-Employed / LAUTECH Academic Projects · Ogbomoso, Nigeria</p>
                     <ul>
-                        <li>Conducted data cleaning, transformation, and exploratory analysis on student exam scores and survey responses.</li>
-                        <li>Designed interactive dashboards using Excel and Power BI to visualize academic performance and behavioral trends.</li>
-                        <li>Engaged stakeholders and academic teams to derive insights for academic improvement and sustainability awareness.</li>
-                        <li>Automated spreadsheet reporting systems using advanced Excel functions and VBA, saving 40% of analysis time.</li>
+                        <li>Cleaned, transformed, and analyzed student exam scores and survey responses.</li>
+                        <li>Designed interactive Excel and Power BI dashboards for academic performance and behavioral trends.</li>
+                        <li>Automated spreadsheet reporting with advanced Excel functions and VBA, saving 40% of analysis time.</li>
                     </ul>
-                </li>
-                <li>
-                    <strong>Environmental Data Enthusiast</strong><br>
-                    <em>LAUTECH Academic Initiatives – Ogbomoso, Nigeria</em><br>
-                    <em>Mar 2024 – Present</em>
+                </div>
+                <div class="resume-entry">
+                    <div class="resume-entry-heading">
+                        <h3>Environmental Data Enthusiast</h3>
+                        <span>Mar 2024 – Present</span>
+                    </div>
+                    <p class="resume-org">LAUTECH Academic Initiatives · Ogbomoso, Nigeria</p>
                     <ul>
-                        <li>Conducted in-depth analysis on solar and wind energy trends, supporting sustainable energy research.</li>
-                        <li>Explored behavioral datasets from 300+ LAUTECH students on snack consumption and eco-friendly habits.</li>
-                        <li>Developed Excel/Power BI dashboards to visualize environmental metrics, improving data comprehension by 60%.</li>
-                        <li>Advocated for data-driven climate action and linked research insights to UN Sustainable Development Goals (SDGs).</li>
+                        <li>Analyzed solar, wind, and student behavioral data to support sustainability research.</li>
+                        <li>Developed dashboards that improved comprehension of environmental metrics by 60%.</li>
+                        <li>Connected research insights to data-driven climate action and UN Sustainable Development Goals.</li>
                     </ul>
-                </li>
-            </ul>
+                </div>
+            </section>
 
-            <h4>Education</h4>
-            <ul>
-                <li>
-                    <strong>B.Tech. in Information Systems</strong><br>
-                    Ladoke Akintola University of Technology (LAUTECH), Nigeria<br>
-                    <em>Expected Graduation: 2025</em>
-                    <br>
-                    Relevant Courses: Data Analytics, Environmental Informatics, Java Programming, Database Systems
-                </li>
-            </ul>
+            <section class="resume-section" aria-labelledby="skills-heading">
+                <h2 id="skills-heading">Skills</h2>
+                <div class="resume-skills">
+                    <div><h3>Data &amp; Visualization</h3><p>Excel · Power BI · Data Cleaning · Dashboard Design · DAX</p></div>
+                    <div><h3>Automation &amp; Tools</h3><p>Excel VBA · Report Templates · Microsoft Word · PowerPoint · Copilot</p></div>
+                    <div><h3>Professional</h3><p>Analytical Thinking · Problem Solving · Stakeholder Engagement · Collaboration</p></div>
+                </div>
+            </section>
 
-            <h4>Certifications &amp; Licenses</h4>
-            <ul>
-                <li>Career Essentials in Generative AI – <em>Microsoft &amp; LinkedIn</em>, Jun 2025</li>
-                <li>Introduction to Artificial Intelligence – <em>LinkedIn</em>, Jun 2025</li>
-                <li>Streamlining Your Work with Microsoft Copilot – <em>LinkedIn</em>, Jun 2025</li>
-                <li>Ethics in the Age of Generative AI – <em>LinkedIn</em>, May 2025</li>
-                <li>Generative AI: The Evolution of Thoughtful Online Search – <em>LinkedIn</em>, May 2025</li>
-                <li>Learning Microsoft 365 Copilot for Work – <em>LinkedIn</em>, May 2025</li>
-                <li>What Is Generative AI? – <em>LinkedIn</em>, Jan 2025</li>
-                <li>Introduction to Career Skills in Data Analytics – <em>LinkedIn</em>, Oct 2024</li>
-                <li>Excel: Creating a Basic Dashboard – <em>LinkedIn</em>, Sep 2024</li>
-            </ul>
-
-            <h4>Skills</h4>
-            <ul>
-                <li><strong>Data Analysis &amp; Cleaning:</strong> Excel (PivotTables, Formulas), Power BI, Data Transformation</li>
-                <li><strong>Data Visualization:</strong> Power BI Dashboards, Excel Charts</li>
-                <li><strong>Automation:</strong> Excel VBA, Report Templates</li>
-                <li><strong>Soft Skills:</strong> Analytical Thinking, Problem Solving, Team Collaboration, Active Listening</li>
-                <li><strong>Other Tools:</strong> Microsoft Word, PowerPoint, DAX, Microsoft Copilot</li>
-            </ul>
-
-            <h4>Projects</h4>
-            <ul>
-                <li>
-                    <strong>Student Snack Consumption &amp; Environmental Awareness</strong><br>
-                    Analyzed behavioral data of LAUTECH students to identify eco-conscious habits; built dashboards to showcase trends.
-                </li>
-                <li>
-                    <strong>Solar &amp; Wind Power Trends in Nigeria</strong><br>
-                    Contributed to a sustainability project analyzing renewable energy data using statistical techniques and dashboards.
-                </li>
-            </ul>
-
-            <h4>Languages</h4>
-            <ul>
-                <li><strong>English</strong> – Fluent</li>
-                <li><strong>Yoruba</strong> – Native</li>
-            </ul>
-
-            <h4>Interests</h4>
-            <ul>
-                <li>Climate Action Advocacy</li>
-                <li>Data-Driven Storytelling</li>
-                <li>Renewable Energy Research</li>
-                <li>Excel Dashboard Design</li>
-            </ul>
-
-            <p style="margin-top:2rem;">
-                <a href="Elisha%20Oguntade.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Download PDF</a>
-            </p>
-        </section>
+            <section class="resume-section resume-compact" aria-labelledby="additional-heading">
+                <h2 id="additional-heading">Certifications &amp; Additional Information</h2>
+                <p><strong>Certifications:</strong> Career Essentials in Generative AI; Introduction to Artificial Intelligence; Introduction to Career Skills in Data Analytics; Excel: Creating a Basic Dashboard.</p>
+                <p><strong>Languages:</strong> English (Fluent) · Yoruba (Native) &nbsp;&nbsp; <strong>Interests:</strong> Climate Action Advocacy · Data-Driven Storytelling · Renewable Energy Research</p>
+            </section>
+        </article>
     </main>
-    <footer>
+
+    <footer class="no-print">
         <p>&copy; 2025 ElishaInsights. All rights reserved.</p>
     </footer>
     <script src="script.js"></script>

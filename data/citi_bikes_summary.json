@@ -1,0 +1,40 @@
+{
+  "source_file": "JC-201509-citibike-tripdata.csv",
+  "source_url": "https://s3.amazonaws.com/tripdata/JC-201509-citibike-tripdata.csv.zip",
+  "period": "September 2015",
+  "location": "Jersey City, New Jersey",
+  "observed_start": "2015-09-21",
+  "observed_end": "2015-09-30",
+  "observed_days": 10,
+  "total_rides": 6668,
+  "columns": 15,
+  "average_duration_minutes": 71.89,
+  "median_duration_minutes": 8.95,
+  "member_mix": [
+    {"label": "Subscriber", "value": 5292},
+    {"label": "Customer", "value": 1376}
+  ],
+  "weekday_counts": [
+    {"label": "Monday", "value": 981},
+    {"label": "Tuesday", "value": 1255},
+    {"label": "Wednesday", "value": 1239},
+    {"label": "Thursday", "value": 664},
+    {"label": "Friday", "value": 673},
+    {"label": "Saturday", "value": 1005},
+    {"label": "Sunday", "value": 851}
+  ],
+  "top_start_stations": [
+    {"label": "Grove St PATH", "value": 731},
+    {"label": "Exchange Place", "value": 538},
+    {"label": "Hamilton Park", "value": 530},
+    {"label": "Newport PATH", "value": 394},
+    {"label": "Sip Ave", "value": 387},
+    {"label": "Newport Pkwy", "value": 336}
+  ],
+  "duration_buckets": [
+    {"label": "0–10 min", "value": 3670},
+    {"label": "10–20 min", "value": 1613},
+    {"label": "20–40 min", "value": 974},
+    {"label": "40+ min", "value": 411}
+  ]
+}
