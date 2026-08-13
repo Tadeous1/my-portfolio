@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects – ElishaInsights</title>
+    <meta name="description" content="Selected data analysis and sustainability projects by Elisha Oguntade.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,18 +12,18 @@
         <nav id="navbar" class="navbar">
             <div class="nav-container">
                 <a href="index.html#home" class="logo" aria-label="Home">ElishaInsights</a>
-                <ul class="nav-links">
+                <ul id="primary-navigation" class="nav-links">
                     <li><a href="about.html">About</a></li>
                     <li><a href="projects.html" class="active">Projects</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                     <li><a href="resume.html">Resume</a></li>
                 </ul>
-                <button class="theme-toggle" aria-label="Toggle dark mode">
+                <button type="button" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
                     <svg width="24" height="24" fill="none"><circle cx="12" cy="12" r="10" stroke="#333" stroke-width="2"/></svg>
                 </button>
-                <div class="mobile-menu" aria-label="Open navigation menu" tabindex="0">
+                <button type="button" class="mobile-menu" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false">
                     <span></span><span></span><span></span>
-                </div>
+                </button>
             </div>
         </nav>
     </header>
@@ -35,7 +36,7 @@
                     <div class="project-card">
                         <div class="project-icon">🚲</div>
                         <h3>Citi Bikes Data Analysis</h3>
-                        <p>
+                        <div class="project-description">
                             <strong>Dataset:</strong> 20,400 entries, 17 columns.<br>
                             <strong>Analysis included:</strong>
                             <ul>
@@ -44,22 +45,22 @@
                                 <li>Trip counts by weekday and season</li>
                                 <li>Weather impact on usage</li>
                             </ul>
-                            Delivered interactive visuals and descriptive statistics.
-                        </p>
+                            <span>Delivered interactive visuals and descriptive statistics.</span>
+                        </div>
                         <div class="project-tags">
                             <span class="project-tag">Power BI</span>
                             <span class="project-tag">Data Analysis</span>
                             <span class="project-tag">Visualization</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link primary">See Report</a>
+                            <a href="mailto:elishao2000@gmail.com?subject=Request%20for%20Citi%20Bikes%20report" class="project-link primary">Request Report</a>
                         </div>
                     </div>
                     <!-- Olympic Historical Data Analysis -->
                     <div class="project-card">
                         <div class="project-icon">🏅</div>
                         <h3>Olympic Historical Data Analysis</h3>
-                        <p>
+                        <div class="project-description">
                             Used for portfolio building.<br>
                             <strong>Explored trends over time including:</strong>
                             <ul>
@@ -67,14 +68,14 @@
                                 <li>Athlete demographics</li>
                                 <li>Country-level performance</li>
                             </ul>
-                        </p>
+                        </div>
                         <div class="project-tags">
                             <span class="project-tag">Python</span>
                             <span class="project-tag">Pandas</span>
                             <span class="project-tag">Data Visualization</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link primary">View Notebook</a>
+                            <a href="mailto:elishao2000@gmail.com?subject=Request%20for%20Olympic%20notebook" class="project-link primary">Request Notebook</a>
                         </div>
                     </div>
                     <!-- LAUTECH Student Snack Preference Dataset -->
@@ -90,7 +91,7 @@
                             <span class="project-tag">Data Analysis</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link secondary">Details</a>
+                            <a href="mailto:elishao2000@gmail.com?subject=LAUTECH%20snack%20preference%20project" class="project-link secondary">Discuss Project</a>
                         </div>
                     </div>
                     <!-- Example Project Card (keep or remove as needed) -->
@@ -104,8 +105,8 @@
                             <span class="project-tag">DAX</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link primary">Live Demo</a>
-                            <a href="#" class="project-link secondary">GitHub</a>
+                            <a href="mailto:elishao2000@gmail.com?subject=Request%20for%20sales%20dashboard%20demo" class="project-link primary">Request Demo</a>
+                            <a href="https://github.com/Tadeous1" target="_blank" rel="noopener noreferrer" class="project-link secondary">GitHub Profile</a>
                         </div>
                     </div>
                 </div>

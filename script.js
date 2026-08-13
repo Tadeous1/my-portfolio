@@ -1,243 +1,191 @@
-// Navbar scroll effect
-window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
+(() => {
+    'use strict';
 
-// Fade in animation on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
+    function initialise() {
+        const navbar = document.getElementById('navbar');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const nav = document.querySelector('nav');
+        const navLinks = document.querySelector('.nav-links');
+        const themeToggle = document.querySelector('.theme-toggle');
+        const scrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
 
-document.querySelectorAll('.fade-in').forEach(el => {
-    observer.observe(el);
-});
+        const updateScrolledState = () => {
+            if (navbar) {
+                navbar.classList.toggle('scrolled', window.scrollY > 10);
+            }
+        };
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            e.preventDefault();
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
+        updateScrolledState();
+        window.addEventListener('scroll', () => {
+            updateScrolledState();
 
-// Mobile menu toggle and nav-open logo color for mobile
-document.addEventListener("DOMContentLoaded", function () {
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const nav = document.querySelector('nav');
-    const navLinks = document.querySelector('.nav-links');
+            const heroVisual = document.querySelector('.hero-visual');
+            if (heroVisual && !prefersReducedMotion) {
+                heroVisual.style.transform = `translateY(${window.scrollY * 0.2}px)`;
+            }
+        }, { passive: true });
 
-    if (mobileMenu && nav && navLinks) {
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            nav.classList.toggle('nav-open');
-        });
+        const closeMobileMenu = () => {
+            navLinks?.classList.remove('active');
+            nav?.classList.remove('nav-open');
+            mobileMenu?.setAttribute('aria-expanded', 'false');
+        };
 
-        // Optionally: close menu when a nav link is clicked
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth < 900) {
-                    navLinks.classList.remove('active');
-                    nav.classList.remove('nav-open');
+        const toggleMobileMenu = () => {
+            const isOpen = navLinks?.classList.toggle('active') ?? false;
+            nav?.classList.toggle('nav-open', isOpen);
+            mobileMenu?.setAttribute('aria-expanded', String(isOpen));
+        };
+
+        if (mobileMenu && nav && navLinks) {
+            mobileMenu.setAttribute('aria-expanded', 'false');
+            mobileMenu.addEventListener('click', toggleMobileMenu);
+            mobileMenu.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    toggleMobileMenu();
                 }
             });
-        });
-    }
 
-    // Dark mode toggle
-    const themeToggle = document.querySelector('.theme-toggle');
-    themeToggle?.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        document.documentElement.classList.toggle('dark-mode');
-        if (document.body.classList.contains('dark-mode')) {
-            localStorage.setItem('theme', 'dark');
-        } else {
-            localStorage.setItem('theme', 'light');
+            navLinks.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 900) {
+                        closeMobileMenu();
+                    }
+                });
+            });
         }
-    });
 
-    // Set initial mode from localStorage
-    if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.documentElement.classList.add('dark-mode');
-    }
-
-    // Optional: Responsive nav shadow on scroll
-    window.addEventListener('scroll', () => {
-        if (nav) {
-            if (window.scrollY > 10) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
+        const setTheme = (theme, persist = true) => {
+            const isDark = theme === 'dark';
+            document.body.classList.toggle('dark-mode', isDark);
+            document.documentElement.classList.toggle('dark-mode', isDark);
+            themeToggle?.setAttribute('aria-pressed', String(isDark));
+            if (persist) {
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
             }
-        }
-    });
+        };
 
-    // Example: Chart.js hero chart (if present)
-    if (window.Chart && document.getElementById('heroChart')) {
-        const ctx = document.getElementById('heroChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Excel', 'Power BI', 'Python', 'VBA', 'DAX'],
-                datasets: [{
-                    label: 'Skill Level',
-                    data: [9, 8, 7, 7, 6],
-                    backgroundColor: [
-                        '#4A90E2', '#00C896', '#F4B942', '#EF476F', '#5C5470'
-                    ],
-                    borderRadius: 8
-                }]
-            },
-            options: {
-                plugins: {
-                    legend: { display: false }
+        const storedTheme = localStorage.getItem('theme');
+        setTheme(storedTheme === 'dark' ? 'dark' : 'light', false);
+        themeToggle?.addEventListener('click', () => {
+            const nextTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+            setTheme(nextTheme);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            const href = anchor.getAttribute('href');
+            if (!href || href === '#') {
+                return;
+            }
+
+            let target;
+            try {
+                target = document.querySelector(href);
+            } catch (_error) {
+                return;
+            }
+
+            if (!target) {
+                return;
+            }
+
+            anchor.addEventListener('click', (event) => {
+                event.preventDefault();
+                target.scrollIntoView({ behavior: scrollBehavior, block: 'start' });
+                window.history.replaceState(null, '', href);
+            });
+        });
+
+        const fadeInElements = document.querySelectorAll('.fade-in');
+        const skillTags = document.querySelectorAll('.skill-tag');
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries, currentObserver) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        currentObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+            fadeInElements.forEach((element) => observer.observe(element));
+
+            const skillObserver = new IntersectionObserver((entries, currentObserver) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        currentObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            skillTags.forEach((tag) => {
+                tag.style.opacity = '0';
+                tag.style.transform = 'translateY(20px)';
+                tag.style.transition = prefersReducedMotion ? 'none' : 'opacity 0.5s ease, transform 0.5s ease';
+                skillObserver.observe(tag);
+            });
+        } else {
+            fadeInElements.forEach((element) => element.classList.add('visible'));
+            skillTags.forEach((tag) => {
+                tag.style.opacity = '1';
+                tag.style.transform = 'translateY(0)';
+            });
+        }
+
+        const subtitle = document.querySelector('.hero-content .subtitle');
+        if (subtitle && !prefersReducedMotion) {
+            const originalText = subtitle.textContent ?? '';
+            let index = 0;
+            subtitle.textContent = '';
+
+            const typeNextCharacter = () => {
+                if (index < originalText.length) {
+                    subtitle.textContent += originalText.charAt(index);
+                    index += 1;
+                    window.setTimeout(typeNextCharacter, 80);
+                }
+            };
+
+            window.setTimeout(typeNextCharacter, 1000);
+        }
+
+        const chartCanvas = document.getElementById('heroChart');
+        if (chartCanvas && window.Chart && !window.Chart.getChart(chartCanvas)) {
+            new window.Chart(chartCanvas, {
+                type: 'bar',
+                data: {
+                    labels: ['Excel', 'Power BI', 'Python', 'VBA', 'DAX'],
+                    datasets: [{
+                        label: 'Skill Level',
+                        data: [9, 8, 7, 7, 6],
+                        backgroundColor: ['#4A90E2', '#00C896', '#F4B942', '#EF476F', '#5C5470'],
+                        borderRadius: 8,
+                        borderSkipped: false
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 10,
-                        ticks: { color: "#4A90E2", stepSize: 2 }
-                    },
-                    x: {
-                        ticks: { color: "#4A90E2" }
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: prefersReducedMotion ? false : undefined,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, max: 10, ticks: { color: '#4A90E2', stepSize: 2 } },
+                        x: { ticks: { color: '#4A90E2' } }
                     }
                 }
-            }
-        });
-    }
-});
-
-// Typing animation for hero subtitle
-function typeWriter(element, text, speed = 100) {
-    let i = 0;
-    element.innerHTML = '';
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    type();
-}
-
-window.addEventListener('load', function() {
-    const subtitle = document.querySelector('.hero-content .subtitle');
-    if (subtitle) {
-        const originalText = subtitle.textContent;
-        setTimeout(() => {
-            typeWriter(subtitle, originalText, 80);
-        }, 1000);
-    }
-});
-
-// Parallax effect for hero section
-window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const heroVisual = document.querySelector('.hero-visual');
-    const floatingElements = document.querySelectorAll('.floating-icon');
-    if (heroVisual) {
-        heroVisual.style.transform = `translateY(${scrolled * 0.2}px)`;
-        floatingElements.forEach((element, index) => {
-            const speed = 0.1 + (index * 0.05);
-            element.style.transform = `translateY(${scrolled * speed}px)`;
-        });
-    }
-});
-
-// Animate skill tags on scroll
-const skillTags = document.querySelectorAll('.skill-tag');
-const skillObserver = new IntersectionObserver(function(entries) {
-    entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-            setTimeout(() => {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }, index * 100);
-        }
-    });
-}, { threshold: 0.5 });
-
-skillTags.forEach(tag => {
-    tag.style.opacity = '0';
-    tag.style.transform = 'translateY(20px)';
-    tag.style.transition = 'all 0.5s ease';
-    skillObserver.observe(tag);
-});
-
-// Project cards hover effects
-const projectCards = document.querySelectorAll('.project-card');
-projectCards.forEach(card => {
-    card.addEventListener('mouseover', () => {
-        card.style.transform = 'scale(1.05)';
-    });
-    card.addEventListener('mouseout', () => {
-        card.style.transform = 'scale(1)';
-    });
-});
-
-// Smooth scrolling for project links
-document.querySelectorAll('.project-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
             });
         }
-    });
-});
-
-// ================================
-// Chart.js in Hero Data Viz (fallback demo if not using main chart above)
-// ================================
-window.addEventListener('DOMContentLoaded', function() {
-    const ctx = document.getElementById('heroChart');
-    if (ctx && !ctx.chart) { // prevent double instantiation
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-                datasets: [{
-                    label: 'Sample Data',
-                    data: [12, 19, 9, 17, 14],
-                    borderColor: '#4A90E2',
-                    backgroundColor: 'rgba(74,144,226,0.1)',
-                    fill: true,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                plugins: {
-                    legend: { display: false }
-                },
-                scales: {
-                    x: { grid: { display: false } },
-                    y: { grid: { color: '#eee' }, beginAtZero: true }
-                }
-            }
-        });
     }
-});
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initialise, { once: true });
+    } else {
+        initialise();
+    }
+})();

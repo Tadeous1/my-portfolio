@@ -125,6 +125,9 @@ body.dark-mode .nav-links a.active {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    border: 0;
+    padding: 0;
+    background: transparent;
 }
 
 .mobile-menu span {
@@ -133,6 +136,10 @@ body.dark-mode .nav-links a.active {
     background: #2E2E2E;
     margin: 3px 0;
     transition: 0.3s;
+}
+
+body.dark-mode .mobile-menu span {
+    background: #F4F6F8;
 }
 
 /* Hero Section Styles */

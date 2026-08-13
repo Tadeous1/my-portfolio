@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About – ElishaInsights</title>
+    <meta name="description" content="Learn about Elisha Oguntade's data analysis, sustainability, and environmental data focus.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,18 +12,18 @@
         <nav id="navbar" class="navbar">
             <div class="nav-container">
                 <a href="index.html#home" class="logo" aria-label="Home">ElishaInsights</a>
-                <ul class="nav-links">
+                <ul id="primary-navigation" class="nav-links">
                     <li><a href="about.html" class="active">About</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                     <li><a href="resume.html">Resume</a></li>
                 </ul>
-                <button class="theme-toggle" aria-label="Toggle dark mode">
+                <button type="button" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
                     <svg width="24" height="24" fill="none"><circle cx="12" cy="12" r="10" stroke="#333" stroke-width="2"/></svg>
                 </button>
-                <div class="mobile-menu" aria-label="Open navigation menu" tabindex="0">
+                <button type="button" class="mobile-menu" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false">
                     <span></span><span></span><span></span>
-                </div>
+                </button>
             </div>
         </nav>
     </header>
