@@ -1,0 +1,29 @@
+{
+  "dataset": "Rio 2016 athlete and medal data",
+  "source_url": "https://datahub.io/core/rio2016",
+  "official_context_url": "https://www.olympics.com/en/olympic-games/olympic-results",
+  "records": 11538,
+  "athletes": 11538,
+  "sports": 28,
+  "countries": 207,
+  "medal_totals": {"gold": 666, "silver": 655, "bronze": 704},
+  "top_medal_countries": [
+    {"label": "USA", "value": 264, "gold": 139, "silver": 54, "bronze": 71},
+    {"label": "GER", "value": 160, "gold": 49, "silver": 44, "bronze": 67},
+    {"label": "GBR", "value": 145, "gold": 64, "silver": 55, "bronze": 26},
+    {"label": "RUS", "value": 115, "gold": 52, "silver": 29, "bronze": 34},
+    {"label": "CHN", "value": 113, "gold": 46, "silver": 30, "bronze": 37},
+    {"label": "FRA", "value": 95, "gold": 20, "silver": 54, "bronze": 21},
+    {"label": "AUS", "value": 82, "gold": 23, "silver": 34, "bronze": 25},
+    {"label": "ITA", "value": 72, "gold": 8, "silver": 40, "bronze": 24}
+  ],
+  "top_sports": [
+    {"label": "Athletics", "value": 2363},
+    {"label": "Aquatics", "value": 1445},
+    {"label": "Football", "value": 611},
+    {"label": "Rowing", "value": 547},
+    {"label": "Cycling", "value": 525},
+    {"label": "Hockey", "value": 432}
+  ],
+  "sex_mix": [{"label": "Male", "value": 6333}, {"label": "Female", "value": 5205}]
+}

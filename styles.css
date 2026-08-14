@@ -1402,6 +1402,73 @@ body.dark-mode footer {
     background: #F8FAFC;
 }
 
+.brand-lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.brand-lockup img {
+    width: 2rem;
+    height: 2rem;
+    object-fit: contain;
+    flex: 0 0 auto;
+}
+
+.brand-symbol-fallback {
+    width: 2rem;
+    height: 2rem;
+    flex: 0 0 auto;
+}
+
+.insight-panel {
+    display: flex;
+    min-height: 270px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.insight-panel h3 {
+    margin: 0 0 0.7rem;
+    color: #0F172A;
+    font-size: 1.35rem;
+}
+
+.insight-panel p:not(.eyebrow):not(.small-note) {
+    margin: 0;
+    color: #475569;
+    line-height: 1.7;
+}
+
+.small-note {
+    margin: 1rem 0 0;
+    color: #64748B;
+    font-size: 0.76rem;
+    line-height: 1.55;
+}
+
+.data-request-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.7rem;
+}
+
+body.dark-mode .insight-panel h3 {
+    color: #F8FAFC;
+}
+
+body.dark-mode .insight-panel p:not(.eyebrow):not(.small-note),
+body.dark-mode .small-note {
+    color: #CBD5E1;
+}
+
+@media (max-width: 640px) {
+    .data-request-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .case-study-main {
     max-width: 1180px;
     margin: 0 auto;

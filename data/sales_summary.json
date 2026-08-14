@@ -1,0 +1,40 @@
+{
+  "dataset": "Online Retail",
+  "source_url": "https://archive.ics.uci.edu/dataset/352/online+retail",
+  "doi": "https://doi.org/10.24432/C5BW33",
+  "raw_records": 541909,
+  "completed_line_items": 530104,
+  "cancelled_line_items": 9288,
+  "date_start": "2010-12-01",
+  "date_end": "2011-12-09",
+  "customers": 4338,
+  "invoices": 19960,
+  "revenue_gbp": 10666684.54,
+  "average_invoice_value_gbp": 534.4,
+  "top_months": [
+    {"label": "2011-11", "value": 1509496.33},
+    {"label": "2011-10", "value": 1154979.3},
+    {"label": "2011-09", "value": 1058590.17},
+    {"label": "2010-12", "value": 823746.14},
+    {"label": "2011-05", "value": 770536.02},
+    {"label": "2011-06", "value": 761739.9},
+    {"label": "2011-08", "value": 759138.38},
+    {"label": "2011-07", "value": 719221.19}
+  ],
+  "top_countries": [
+    {"label": "United Kingdom", "value": 9025222.08},
+    {"label": "Netherlands", "value": 285446.34},
+    {"label": "EIRE", "value": 283453.96},
+    {"label": "Germany", "value": 228867.14},
+    {"label": "France", "value": 209715.11},
+    {"label": "Australia", "value": 138521.31}
+  ],
+  "top_products": [
+    {"label": "DOTCOM POSTAGE", "value": 206248.77},
+    {"label": "REGENCY CAKESTAND 3 TIER", "value": 174484.74},
+    {"label": "PAPER CRAFT , LITTLE BIRDIE", "value": 168469.6},
+    {"label": "WHITE HANGING HEART T-LIGHT HOLDER", "value": 106292.77},
+    {"label": "PARTY BUNTING", "value": 99504.33},
+    {"label": "JUMBO BAG RED RETROSPOT", "value": 94340.05}
+  ]
+}

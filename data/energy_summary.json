@@ -1,0 +1,16 @@
+{
+  "dataset": "Renewable energy generation",
+  "source_url": "https://ourworldindata.org/grapher/renewable-energy-gen",
+  "source_note": "Energy Institute - Statistical Review of World Energy (2026), via Our World in Data",
+  "scope": "World",
+  "year_start": 1965,
+  "year_end": 2025,
+  "latest_year": 2025,
+  "latest_values_twh": {"Solar": 2811.06, "Wind": 2714.07, "Hydropower": 4479.16},
+  "checkpoints": [
+    {"year": 2000, "solar": 1.06, "wind": 31.41, "hydropower": 2646.68},
+    {"year": 2010, "solar": 33.92, "wind": 346.53, "hydropower": 3432.23},
+    {"year": 2020, "solar": 861.06, "wind": 1596.24, "hydropower": 4357.88},
+    {"year": 2025, "solar": 2811.06, "wind": 2714.07, "hydropower": 4479.16}
+  ]
+}
