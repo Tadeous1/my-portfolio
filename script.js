@@ -71,6 +71,58 @@
         const scrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
         let heroChart = null;
 
+        const accentPresets = {
+            teal: { label: 'Teal', base: '#14B8A6', strong: '#0F766E', soft: '#CCFBF1', onDark: '#99F6E4', surface: '#134E4A', contrast: '#0F172A', rgb: '20, 184, 166', sky: '#38BDF8', warm: '#F59E0B', slate: '#64748B' },
+            blue: { label: 'Signal Blue', base: '#38BDF8', strong: '#0369A1', soft: '#E0F2FE', onDark: '#7DD3FC', surface: '#0C4A6E', contrast: '#0F172A', rgb: '56, 189, 248', sky: '#0EA5E9', warm: '#F59E0B', slate: '#64748B' },
+            amber: { label: 'Insight Amber', base: '#F59E0B', strong: '#B45309', soft: '#FEF3C7', onDark: '#FCD34D', surface: '#78350F', contrast: '#1E293B', rgb: '245, 158, 11', sky: '#38BDF8', warm: '#14B8A6', slate: '#64748B' },
+            coral: { label: 'Coral Signal', base: '#FB7185', strong: '#BE123C', soft: '#FFE4E6', onDark: '#FDA4AF', surface: '#881337', contrast: '#FFFFFF', rgb: '251, 113, 133', sky: '#38BDF8', warm: '#F59E0B', slate: '#94A3B8' },
+        };
+
+        const accentPicker = (() => {
+            if (!themeToggle || document.querySelector('.accent-picker')) return null;
+            const picker = document.createElement('details');
+            picker.className = 'accent-picker';
+            picker.innerHTML = `<summary class="accent-picker-toggle" aria-label="Choose accent color" title="Choose accent color"><span class="accent-picker-dot" aria-hidden="true"></span><span class="accent-picker-label">Accent</span></summary><div class="accent-picker-panel" role="group" aria-label="Accent color options"><p>Accent color</p>${Object.entries(accentPresets).map(([key, preset]) => `<button type="button" class="accent-option" data-accent="${key}" aria-pressed="false"><span class="accent-swatch" style="--swatch:${preset.base}" aria-hidden="true"></span><span>${preset.label}</span></button>`).join('')}</div>`;
+            themeToggle.insertAdjacentElement('afterend', picker);
+            return picker;
+        })();
+
+        let activeAccentKey = 'teal';
+        const getAccent = () => accentPresets[activeAccentKey] ?? accentPresets.teal;
+        const applyAccent = (accentKey, persist = true) => {
+            activeAccentKey = accentPresets[accentKey] ? accentKey : 'teal';
+            const accent = getAccent();
+            const root = document.documentElement;
+            root.dataset.accent = activeAccentKey;
+            root.style.setProperty('--accent', accent.base);
+            root.style.setProperty('--accent-strong', accent.strong);
+            root.style.setProperty('--accent-soft', accent.soft);
+            root.style.setProperty('--accent-on-dark', accent.onDark);
+            root.style.setProperty('--accent-surface', accent.surface);
+            root.style.setProperty('--accent-contrast', accent.contrast);
+            root.style.setProperty('--accent-rgb', accent.rgb);
+            accentPicker?.querySelectorAll('.accent-option').forEach((option) => {
+                option.setAttribute('aria-pressed', String(option.dataset.accent === activeAccentKey));
+            });
+            if (heroChart) {
+                const chartTextColor = document.body.classList.contains('dark-mode') ? accent.onDark : accent.strong;
+                heroChart.data.datasets[0].backgroundColor = [accent.strong, accent.base, accent.sky, accent.warm, accent.slate];
+                heroChart.options.scales.y.ticks.color = chartTextColor;
+                heroChart.options.scales.x.ticks.color = chartTextColor;
+                heroChart.update('none');
+            }
+            if (persist) localStorage.setItem('accent', activeAccentKey);
+        };
+
+        accentPicker?.querySelectorAll('.accent-option').forEach((option) => {
+            option.addEventListener('click', () => {
+                applyAccent(option.dataset.accent);
+                accentPicker.removeAttribute('open');
+            });
+        });
+
+        applyAccent(localStorage.getItem('accent'), false);
+
         const updateScrolledState = () => {
             if (navbar) {
                 navbar.classList.toggle('scrolled', window.scrollY > 10);
@@ -120,11 +172,14 @@
 
         const setTheme = (theme, persist = true) => {
             const isDark = theme === 'dark';
+            const accent = getAccent();
             document.body.classList.toggle('dark-mode', isDark);
             document.documentElement.classList.toggle('dark-mode', isDark);
             themeToggle?.setAttribute('aria-pressed', String(isDark));
+            themeToggle?.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+            themeToggle?.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
             if (heroChart) {
-                const chartTextColor = isDark ? '#99F6E4' : '#0F766E';
+                const chartTextColor = isDark ? accent.onDark : accent.strong;
                 heroChart.options.scales.y.ticks.color = chartTextColor;
                 heroChart.options.scales.x.ticks.color = chartTextColor;
                 heroChart.update('none');
@@ -231,7 +286,7 @@
                     datasets: [{
                         label: 'Skill Level',
                         data: [9, 8, 7, 7, 6],
-                        backgroundColor: ['#0F766E', '#14B8A6', '#38BDF8', '#F59E0B', '#64748B'],
+                    backgroundColor: [getAccent().strong, getAccent().base, getAccent().sky, getAccent().warm, getAccent().slate],
                         borderRadius: 8,
                         borderSkipped: false
                     }]

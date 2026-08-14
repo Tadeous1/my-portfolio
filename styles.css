@@ -2483,3 +2483,224 @@ body.dark-mode .resume-callout {
         padding: 1.4rem;
     }
 }
+
+/* E.O. Analytics theme controls: compact, keyboard-friendly controls that preserve the deep-navy / soft-white system while allowing a deliberate accent choice. */
+:root {
+    --accent: #14B8A6;
+    --accent-strong: #0F766E;
+    --accent-soft: #CCFBF1;
+    --accent-on-dark: #99F6E4;
+    --accent-surface: #134E4A;
+    --accent-contrast: #0F172A;
+    --accent-rgb: 20, 184, 166;
+}
+
+.accent-picker {
+    position: relative;
+    z-index: 30;
+    margin-left: 0.35rem;
+}
+
+.accent-picker-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    min-width: 2.35rem;
+    min-height: 2.35rem;
+    padding: 0.38rem 0.55rem;
+    border: 1px solid rgba(248, 250, 252, 0.25);
+    border-radius: 999px;
+    color: #F8FAFC;
+    cursor: pointer;
+    list-style: none;
+    transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.accent-picker-toggle::-webkit-details-marker {
+    display: none;
+}
+
+.accent-picker-toggle:hover,
+.accent-picker[open] .accent-picker-toggle,
+.accent-picker-toggle:focus-visible {
+    background: rgba(var(--accent-rgb), 0.16);
+    border-color: var(--accent-on-dark);
+    outline: none;
+}
+
+.accent-picker-toggle:active {
+    transform: scale(0.97);
+}
+
+.accent-picker-dot,
+.accent-swatch {
+    display: inline-block;
+    width: 0.8rem;
+    height: 0.8rem;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.16);
+}
+
+.accent-picker-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.accent-picker-panel {
+    position: absolute;
+    top: calc(100% + 0.7rem);
+    right: 0;
+    width: 12rem;
+    padding: 0.75rem;
+    border: 1px solid #CBD5E1;
+    border-radius: 0.85rem;
+    background: #FFFFFF;
+    box-shadow: 0 16px 38px rgba(15, 23, 42, 0.2);
+}
+
+.accent-picker-panel p {
+    margin: 0 0 0.55rem;
+    color: #64748B;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.accent-option {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    width: 100%;
+    padding: 0.5rem 0.55rem;
+    border: 1px solid transparent;
+    border-radius: 0.6rem;
+    background: transparent;
+    color: #1E293B;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.82rem;
+    text-align: left;
+    transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.accent-option:hover,
+.accent-option:focus-visible,
+.accent-option[aria-pressed="true"] {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    outline: none;
+}
+
+.accent-option:active {
+    transform: scale(0.98);
+}
+
+.accent-option .accent-swatch {
+    background: var(--swatch);
+    box-shadow: none;
+}
+
+body.dark-mode .accent-picker-panel {
+    border-color: #334155;
+    background: #111827;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .accent-picker-panel p {
+    color: #94A3B8;
+}
+
+body.dark-mode .accent-option {
+    color: #F8FAFC;
+}
+
+body.dark-mode .accent-option:hover,
+body.dark-mode .accent-option:focus-visible,
+body.dark-mode .accent-option[aria-pressed="true"] {
+    background: var(--accent-surface);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: rgba(var(--accent-rgb), 0.16);
+    border-bottom-color: var(--accent-on-dark);
+}
+
+.hero-content .subtitle,
+.project-card p strong,
+.eyebrow,
+.workflow-grid article > span,
+.process-timeline article > span,
+.case-study-source-card a,
+.source-footer a {
+    color: var(--accent-strong);
+}
+
+.btn-primary,
+.project-link.primary,
+.project-icon,
+.project-filter.active,
+.contact-link:hover {
+    background: var(--accent) !important;
+    color: var(--accent-contrast) !important;
+}
+
+.btn-primary:hover,
+.project-link.primary:hover {
+    background: var(--accent-strong) !important;
+    color: #FFFFFF !important;
+}
+
+.skill-tag,
+.project-tag,
+.social-icons a {
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+}
+
+.social-icons a:hover {
+    background: var(--accent);
+    color: var(--accent-contrast);
+}
+
+body.dark-mode .hero-content .subtitle,
+body.dark-mode .project-card p strong,
+body.dark-mode .eyebrow,
+body.dark-mode .workflow-grid article > span,
+body.dark-mode .process-timeline article > span,
+body.dark-mode .case-study-source-card a,
+body.dark-mode .source-footer a {
+    color: var(--accent-on-dark);
+}
+
+body.dark-mode .skill-tag,
+body.dark-mode .project-tag {
+    background: var(--accent-surface) !important;
+    color: var(--accent-on-dark) !important;
+}
+
+body.dark-mode .btn-primary,
+body.dark-mode .project-link.primary,
+body.dark-mode .project-icon,
+body.dark-mode .project-filter.active,
+body.dark-mode .contact-link:hover {
+    background: var(--accent) !important;
+    color: var(--accent-contrast) !important;
+}
+
+@media (max-width: 640px) {
+    .accent-picker-panel {
+        right: -0.35rem;
+    }
+}
