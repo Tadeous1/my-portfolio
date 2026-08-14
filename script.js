@@ -9,7 +9,7 @@
             node.textContent = brandName;
         });
         document.querySelectorAll('footer p').forEach((node) => {
-            node.innerHTML = node.innerHTML.replaceAll('ElishaInsights', brandName);
+            node.innerHTML = node.innerHTML.replaceAll('ElishaInsights', brandName).replaceAll('2025 E.O. Analytics', '2025–2026 E.O. Analytics');
         });
         document.title = document.title.replaceAll('ElishaInsights', brandName);
 
