@@ -4,6 +4,15 @@
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function initialise() {
+        const brandName = 'E.O. Analytics';
+        document.querySelectorAll('.brand-lockup span').forEach((node) => {
+            node.textContent = brandName;
+        });
+        document.querySelectorAll('footer p').forEach((node) => {
+            node.innerHTML = node.innerHTML.replaceAll('ElishaInsights', brandName);
+        });
+        document.title = document.title.replaceAll('ElishaInsights', brandName);
+
         const dashboardType = document.body.dataset.dashboard;
         const workflowCopy = {
             olympics: [

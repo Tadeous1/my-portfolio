@@ -12,7 +12,7 @@ Visit: [https://tadeous1.github.io/](https://tadeous1.github.io/)
 
 ## 📄 About
 
-**ElishaInsights** is the personal brand of Elisha Oguntade, a detail-oriented data analyst based in Nigeria, passionate about environmental data, sustainability, and digital storytelling.
+**E.O. Analytics** is the personal brand of Elisha Oguntade, a detail-oriented data analyst based in Nigeria, passionate about environmental data, sustainability, and digital storytelling.
 
 The site contains:
 - **Home:** Quick intro and links to featured work.
@@ -72,4 +72,4 @@ This project is open for learning and portfolio inspiration. Please credit if yo
 
 ---
 
-**Made with passion by Elisha Oguntade — ElishaInsights**
+**Made with passion by Elisha Oguntade — E.O. Analytics**
