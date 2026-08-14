@@ -398,6 +398,7 @@ body.dark-mode .mobile-menu span {
 }
 
 .project-icon {
+    /* Visual direction: deep navy and teal evidence-first portfolio; real subject imagery replaces emoji while preserving the compact card tile. */
     width: 60px;
     height: 60px;
     background: linear-gradient(135deg, #4A90E2, #00C896);
@@ -408,6 +409,19 @@ body.dark-mode .mobile-menu span {
     margin-bottom: 1.5rem;
     color: white;
     font-size: 1.5rem;
+}
+
+.project-icon-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    padding: 0.25rem;
+    border-radius: inherit;
+}
+
+.project-icon-image[src=""] {
+    display: none;
 }
 
 .project-card h3 {
