@@ -80,6 +80,7 @@
             <article class="insight-card"><span>03</span><h3>Grove St PATH is the strongest origin</h3><p>Grove St PATH appears as the leading start station with 731 starts, followed by Exchange Place at 538.</p></article>
         </section>
 
+        <section class="workflow-section" aria-labelledby="citi-workflow-heading"><div class="section-heading-row"><div><p class="eyebrow">DATA WORKFLOW</p><h2 id="citi-workflow-heading">From question to decision</h2></div></div><div class="workflow-grid"><article><span>01</span><h3>Ask</h3><p>Where do riders start, when do they ride, and how long are trips?</p></article><article><span>02</span><h3>Collect</h3><p>Use the official Citi Bike trip-history extract and its published field definitions.</p></article><article><span>03</span><h3>Clean</h3><p>Respect the source’s staff, test-station, and short-trip exclusions, then parse timestamps and categories.</p></article><article><span>04</span><h3>Analyze</h3><p>Group rides by weekday, member type, station, and duration band.</p></article><article><span>05</span><h3>Visualize</h3><p>Present the verified aggregates as interactive charts with scope and limitations.</p></article></div></section>
         <section class="method-section" aria-labelledby="method-heading">
             <p class="eyebrow">METHOD &amp; LIMITATIONS</p>
             <h2 id="method-heading">How this dashboard was built</h2>
@@ -88,7 +89,7 @@
                 <p><strong>Processing.</strong> Parsed timestamps, grouped rides by weekday, member type, start station, and duration band, then stored the verified aggregates in a small JSON file for the browser dashboard.</p>
                 <p><strong>Limitations.</strong> This file contains records observed from September 21–30, 2015. It is an educational public-data demonstration and should not be described as a complete September monthly analysis.</p>
             </div>
-            <div class="source-footer"><a href="https://s3.amazonaws.com/tripdata/JC-201509-citibike-tripdata.csv.zip" target="_blank" rel="noopener noreferrer">Download the source CSV extract ↗</a><span>Built with HTML, CSS, JavaScript, and Chart.js.</span></div>
+            <div class="source-footer"><a href="https://s3.amazonaws.com/tripdata/JC-201509-citibike-tripdata.csv.zip" target="_blank" rel="noopener noreferrer">Download the source CSV extract ↗</a><span>Source-backed descriptive case study.</span></div>
         </section>
     </main>
 

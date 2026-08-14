@@ -1,0 +1,70 @@
+{
+  "source_file": "LAUTECH_Student_Snack_Preferences_Cleaned_3500.csv",
+  "records": 3500,
+  "columns": 13,
+  "duplicate_student_ids": 0,
+  "blank_cells": 0,
+  "unknown_cells": 1046,
+  "average_age": 23.71,
+  "average_spend_ngn": 391.97,
+  "median_spend_ngn": 350,
+  "average_satisfaction": 3.49,
+  "gender_mix": [
+    {"label": "Female", "value": 1218},
+    {"label": "Male", "value": 1150},
+    {"label": "Prefer not to say", "value": 1132}
+  ],
+  "top_departments": [
+    {"label": "Electrical/Electronics Engineering", "value": 260},
+    {"label": "Software Engineering", "value": 252},
+    {"label": "Information Systems", "value": 247},
+    {"label": "Architecture", "value": 241},
+    {"label": "Microbiology", "value": 238},
+    {"label": "Food Science", "value": 238}
+  ],
+  "preferred_snacks": [
+    {"label": "Unknown", "value": 269},
+    {"label": "Doughnut", "value": 246},
+    {"label": "Puff-Puff", "value": 234},
+    {"label": "Popcorn", "value": 229},
+    {"label": "Chin Chin", "value": 229},
+    {"label": "Buns", "value": 225},
+    {"label": "Plantain Chips", "value": 223},
+    {"label": "Sausage Roll", "value": 221}
+  ],
+  "preferred_flavors": [
+    {"label": "No Preference", "value": 976},
+    {"label": "Spicy", "value": 552},
+    {"label": "Savory", "value": 515},
+    {"label": "Sweet", "value": 502},
+    {"label": "Salty", "value": 490},
+    {"label": "Mixed", "value": 465}
+  ],
+  "purchase_frequency": [
+    {"label": "Occasionally", "value": 1451},
+    {"label": "Daily", "value": 708},
+    {"label": "Weekly", "value": 678},
+    {"label": "Several times a week", "value": 663}
+  ],
+  "purchase_locations": [
+    {"label": "North Campus", "value": 604},
+    {"label": "Off Campus", "value": 595},
+    {"label": "Main Campus", "value": 589},
+    {"label": "Hostel Area", "value": 578},
+    {"label": "Unknown", "value": 571},
+    {"label": "South Campus", "value": 563}
+  ],
+  "budget_categories": [
+    {"label": "Moderate (₦201-₦400)", "value": 1448},
+    {"label": "Low (≤₦200)", "value": 886},
+    {"label": "Very High (>₦600)", "value": 596},
+    {"label": "High (₦401-₦600)", "value": 570}
+  ],
+  "satisfaction_distribution": [
+    {"label": "1", "value": 470},
+    {"label": "2", "value": 434},
+    {"label": "3", "value": 408},
+    {"label": "4", "value": 1302},
+    {"label": "5", "value": 886}
+  ]
+}

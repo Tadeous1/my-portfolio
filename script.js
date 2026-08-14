@@ -4,6 +4,41 @@
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function initialise() {
+        const dashboardType = document.body.dataset.dashboard;
+        const workflowCopy = {
+            olympics: [
+                ['Ask', 'How do medal totals, sport participation, and athlete mix compare?'],
+                ['Collect', 'Combine a public Rio 2016 athlete dataset with official IOC results context.'],
+                ['Clean', 'Standardize country and sport labels and retain the published medal fields.'],
+                ['Analyze', 'Aggregate medals by nationality and entries by sport and sex.'],
+                ['Visualize', 'Use comparison charts with source attribution and careful interpretation.'],
+            ],
+            energy: [
+                ['Ask', 'How have solar, wind, and hydropower generation changed over time?'],
+                ['Collect', 'Use the Our World in Data grapher and its cited Energy Institute series.'],
+                ['Clean', 'Filter to World and retain the solar, wind, and hydropower fields in TWh.'],
+                ['Analyze', 'Compare checkpoint years and the latest source row without forecasting.'],
+                ['Visualize', 'Use a line chart and latest-year comparison with units always visible.'],
+            ],
+            sales: [
+                ['Ask', 'When, where, and across which products does revenue concentrate?'],
+                ['Collect', 'Use the UCI Online Retail transaction dataset and its documented fields.'],
+                ['Clean', 'Separate cancellations and exclude non-positive quantity or price before revenue calculation.'],
+                ['Analyze', 'Aggregate quantity × unit price by month, country, product, customer, and invoice.'],
+                ['Visualize', 'Present revenue concentration with labeled currency charts and caveats.'],
+            ],
+        };
+        const workflow = workflowCopy[dashboardType];
+        if (workflow && !document.querySelector('.workflow-section')) {
+            const section = document.createElement('section');
+            section.className = 'workflow-section';
+            section.setAttribute('aria-labelledby', `${dashboardType}-workflow-heading`);
+            section.innerHTML = `<div class="section-heading-row"><div><p class="eyebrow">DATA WORKFLOW</p><h2 id="${dashboardType}-workflow-heading">From question to decision</h2></div></div><div class="workflow-grid">${workflow.map(([title, copy], index) => `<article><span>0${index + 1}</span><h3>${title}</h3><p>${copy}</p></article>`).join('')}</div>`;
+            document.querySelector('.method-section')?.before(section);
+        }
+        document.querySelectorAll('.source-footer span').forEach((node) => {
+            if (node.textContent.includes('Built with HTML, CSS, JavaScript, and Chart.js.')) node.remove();
+        });
         const navbar = document.getElementById('navbar');
         const mobileMenu = document.querySelector('.mobile-menu');
         const nav = document.querySelector('nav');

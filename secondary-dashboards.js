@@ -47,9 +47,20 @@
         new Chart(document.getElementById('salesProductChart'), { type: 'bar', data: { labels: data.top_products.map((item) => item.label), datasets: [{ label: 'Revenue', data: data.top_products.map((item) => item.value), backgroundColor: palette.amber, borderRadius: 7, borderSkipped: false }] }, options: { ...baseOptions(), indexAxis: 'y', scales: { x: axes().y, y: { ticks: { color: chartTextColor(), font: { size: 10 } }, grid: { display: false } } } } });
     }
 
+    function renderSnack(data) {
+        metric('records', data.records.toLocaleString());
+        metric('average-spend', `₦${data.average_spend_ngn.toFixed(2)}`);
+        metric('satisfaction', data.average_satisfaction.toFixed(2));
+        metric('unknowns', data.unknown_cells.toLocaleString());
+        new Chart(document.getElementById('snackPreferenceChart'), { type: 'bar', data: { labels: data.preferred_snacks.map((item) => item.label), datasets: [{ label: 'Responses', data: data.preferred_snacks.map((item) => item.value), backgroundColor: palette.teal, borderRadius: 7, borderSkipped: false }] }, options: { ...baseOptions(), indexAxis: 'y', scales: { x: axes().y, y: { ticks: { color: chartTextColor(), font: { size: 10 } }, grid: { display: false } } } } });
+        new Chart(document.getElementById('snackFrequencyChart'), { type: 'doughnut', data: { labels: data.purchase_frequency.map((item) => item.label), datasets: [{ data: data.purchase_frequency.map((item) => item.value), backgroundColor: [palette.navy, palette.teal, palette.sky, palette.amber], borderColor: '#FFFFFF', borderWidth: 3 }] }, options: { ...baseOptions(), cutout: '62%', plugins: { legend: { display: true, position: 'bottom', labels: { color: chartTextColor(), usePointStyle: true } } } } });
+        new Chart(document.getElementById('snackBudgetChart'), { type: 'bar', data: { labels: data.budget_categories.map((item) => item.label), datasets: [{ label: 'Respondents', data: data.budget_categories.map((item) => item.value), backgroundColor: [palette.tealDark, palette.teal, palette.sky, palette.amber], borderRadius: 7, borderSkipped: false }] }, options: { ...baseOptions(), scales: axes() } });
+        new Chart(document.getElementById('snackSatisfactionChart'), { type: 'bar', data: { labels: data.satisfaction_distribution.map((item) => item.label), datasets: [{ label: 'Responses', data: data.satisfaction_distribution.map((item) => item.value), backgroundColor: palette.navy, borderRadius: 7, borderSkipped: false }] }, options: { ...baseOptions(), scales: axes() } });
+    }
+
     async function init() {
         const type = document.body.dataset.dashboard;
-        const files = { olympics: 'data/olympics_summary.json', energy: 'data/energy_summary.json', sales: 'data/sales_summary.json' };
+        const files = { olympics: 'data/olympics_summary.json', energy: 'data/energy_summary.json', sales: 'data/sales_summary.json', snack: 'data/snack_summary.json' };
         if (!type || !files[type]) return;
         try {
             const response = await fetch(files[type]);
@@ -58,6 +69,7 @@
             if (type === 'olympics') renderOlympics(data);
             if (type === 'energy') renderEnergy(data);
             if (type === 'sales') renderSales(data);
+            if (type === 'snack') renderSnack(data);
         } catch (error) {
             const errorNode = document.querySelector('[data-dashboard-error]');
             if (errorNode) { errorNode.hidden = false; errorNode.textContent = 'The dashboard data could not be loaded. Review the linked source notes for the verified dataset.'; }
