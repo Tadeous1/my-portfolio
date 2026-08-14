@@ -28,7 +28,22 @@
                 ['Visualize', 'Present revenue concentration with labeled currency charts and caveats.'],
             ],
         };
+        const detailProfiles = {
+            citi: { title: 'Citi Bikes Data Analysis', description: 'A source-linked Jersey City trip-history case study showing when, where, and by whom shared bikes were used.', tools: ['Python', 'Pandas', 'Chart.js'], rows: '6,668 rides', columns: '10 observed days', variables: 'weekday · member type · station · duration', insight: 'Subscribers represent 79.4% of the observed rides.', source: 'https://s3.amazonaws.com/tripdata/JC-201509-citibike-tripdata.csv.zip', sourceLabel: 'Download Dataset ↗' },
+            olympics: { title: 'Olympic Historical Data Analysis', description: 'A public-data case study comparing country medal totals, athlete entries, sport participation, and sex mix in Rio 2016.', tools: ['Python', 'Pandas', 'Chart.js'], rows: '11,538 athlete entries', columns: '13 source fields', variables: 'medals · nationality · sport · sex', insight: 'The USA leads the top-country medal totals in this dataset.', source: 'https://datahub.io/core/rio2016', sourceLabel: 'Open Dataset ↗' },
+            energy: { title: 'Solar & Wind Power Trends', description: 'A world-level renewable-generation case study comparing solar, wind, and hydropower across 1965–2025.', tools: ['Python', 'Pandas', 'Chart.js'], rows: '61 world-year rows', columns: 'renewable generation fields', variables: 'solar · wind · hydropower · year', insight: 'Solar and wind scale sharply after 2010 while hydropower remains the largest latest-year series.', source: 'https://ourworldindata.org/grapher/renewable-energy-gen', sourceLabel: 'Open Source Chart ↗' },
+            sales: { title: 'Sales Performance Dashboard', description: 'A transparent retail case study showing revenue concentration by month, country, and product from the UCI Online Retail dataset.', tools: ['Python', 'Pandas', 'Chart.js'], rows: '541,909 raw lines', columns: '8 source fields', variables: 'quantity · price · country · invoice', insight: 'The United Kingdom contributes £9.03m of the completed-line revenue calculation.', source: 'https://archive.ics.uci.edu/dataset/352/online+retail', sourceLabel: 'Open Dataset ↗' },
+            snack: { title: 'LAUTECH Student Snack Preference', description: 'A real survey case study covering student snack preferences, purchase frequency, budgets, satisfaction, and locations.', tools: ['Excel', 'Pandas', 'Chart.js'], rows: '3,500 responses', columns: '13 columns', variables: 'snack · frequency · spend · satisfaction', insight: 'Occasional buying is the largest frequency group with 1,451 responses.', source: 'mailto:elishao2000@gmail.com?subject=LAUTECH%20snack%20survey%20source', sourceLabel: 'Request Source File ↗' },
+        };
+        const profile = detailProfiles[dashboardType];
         const workflow = workflowCopy[dashboardType];
+        if (profile && !document.querySelector('.detail-brief')) {
+            const detail = document.createElement('section');
+            detail.className = 'detail-brief';
+            detail.setAttribute('aria-labelledby', `${dashboardType}-detail-heading`);
+            detail.innerHTML = `<div class="detail-brief-main"><p class="eyebrow">01 — PROJECT OVERVIEW</p><h2 id="${dashboardType}-detail-heading">${profile.title}</h2><p>${profile.description}</p></div><div class="detail-brief-tools"><p class="eyebrow">TOOLS</p><div class="detail-tool-list">${profile.tools.map((tool) => `<span>${tool}</span>`).join('')}</div></div><div class="detail-brief-dataset"><p class="eyebrow">02 — DATASET</p><dl><div><dt>Rows</dt><dd>${profile.rows}</dd></div><div><dt>Columns</dt><dd>${profile.columns}</dd></div><div><dt>Key variables</dt><dd>${profile.variables}</dd></div></dl></div><div class="detail-brief-actions"><p class="eyebrow">REPORT ACTIONS</p><a href="#dashboard" class="btn btn-primary">View Full Report →</a><a href="${profile.source}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">${profile.sourceLabel}</a></div><div class="detail-brief-insight"><p class="eyebrow">KEY INSIGHT</p><p>${profile.insight}</p></div>`;
+            document.querySelector('.case-study-hero')?.after(detail);
+        }
         if (workflow && !document.querySelector('.workflow-section')) {
             const section = document.createElement('section');
             section.className = 'workflow-section';
@@ -181,7 +196,7 @@
         }
 
         const subtitle = document.querySelector('.hero-content .subtitle');
-        if (subtitle && !prefersReducedMotion) {
+        if (subtitle?.dataset.typewriter === 'true' && !prefersReducedMotion) {
             const originalText = subtitle.textContent ?? '';
             let index = 0;
             subtitle.textContent = '';

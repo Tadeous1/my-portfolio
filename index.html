@@ -18,6 +18,7 @@
                 <ul id="primary-navigation" class="nav-links">
                     <li><a href="about.html">About</a></li>
                     <li><a href="projects.html">Projects</a></li>
+                    <li><a href="#process">Process</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="resume.html" target="_blank" rel="noopener">Resume</a></li>
                 </ul>
@@ -36,15 +37,22 @@
         <section id="home" class="hero">
             <div class="hero-container">
                 <div class="hero-content">
+                    <p class="eyebrow">DATA ANALYST · DATA ANALYTICS PORTFOLIO</p>
                     <h1>Hi, I'm Elisha Oguntade</h1>
-                    <div class="subtitle">Data Analyst & Environmental Data Enthusiast</div>
+                    <div class="subtitle">Turning data into clear, actionable insights.</div>
                     <p>
-                        I’m passionate about turning raw numbers into actionable stories that drive sustainability and informed decision-making.
-                        Experienced with Excel, Power BI, and environmental data, I help organizations unlock insights that support the UN SDGs and digital transformation.
+                        I use Excel, SQL, Power BI, Python, and data storytelling to clean, analyze, and visualize information for better decisions across sustainability, education, and community impact.
                     </p>
                     <div class="cta-buttons">
-                        <a href="projects.html" class="btn btn-primary">See My Work</a>
+                        <a href="projects.html" class="btn btn-primary">View Projects</a>
+                        <a href="resume.html" class="btn btn-secondary">Download CV</a>
                         <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    </div>
+                    <div class="hero-proof-grid" aria-label="Portfolio highlights">
+                        <div><strong>4+</strong><span>dashboard case studies</span></div>
+                        <div><strong>5</strong><span>workflow stages</span></div>
+                        <div><strong>13</strong><span>core analytics fields</span></div>
+                        <div><strong>1</strong><span>clear data story</span></div>
                     </div>
                     <div class="social-icons">
                         <a href="mailto:elishao2000@gmail.com" aria-label="Email">
@@ -90,15 +98,15 @@
                     <img src="ElishaProfile.jpeg" alt="Elisha Oguntade" style="width:100%;height:100%;border-radius:20px;object-fit:cover;" />
                 </div>
                 <div class="about-content">
-                    <h2>About ElishaInsights</h2>
+                        <h2>About ElishaInsights</h2>
                     <p>
                         Hi! I’m Elisha Oguntade, an environmentally conscious data analyst based in Ogbomoso, Nigeria.
                         I specialize in transforming complex datasets into actionable insights using Excel, Power BI, and data storytelling.
                     </p>
-                    <p>
-                        My mission is to empower sustainability through digital literacy and evidence-based solutions, aligning my work with the UN Sustainable Development Goals.
-                        I thrive on collaboration, analytical thinking, and making data accessible to everyone.
-                    </p>
+                        <p>
+                            My focus is practical analytics: turning messy source files into understandable evidence, then explaining what a decision-maker should do next. I align sustainability, education, and community questions with transparent data work.
+                        </p>
+                        <div class="about-proof-grid"><div><strong>B.Tech</strong><span>Information Systems</span></div><div><strong>Focus</strong><span>Data + sustainability</span></div><div><strong>Tools</strong><span>Excel · SQL · Power BI · Python</span></div></div>
                     <div class="skills">
                         <span class="skill-tag">Excel</span>
                         <span class="skill-tag">Power BI</span>
@@ -115,28 +123,33 @@
         <section id="projects" class="projects fade-in">
             <div class="projects-container">
                 <h2 class="section-title">Featured Projects</h2>
+                <p class="section-intro">Data → analysis → visualization → insight. Each project links to a case study so you can inspect the question, method, evidence, and limitations.</p>
+                <div class="project-filters" role="group" aria-label="Project categories">
+                    <span class="project-filter active">All</span><span class="project-filter">Power BI</span><span class="project-filter">Excel</span><span class="project-filter">SQL</span><span class="project-filter">Python</span>
+                </div>
                 <div class="projects-grid">
                     <div class="project-card">
                         <div class="project-icon">📊</div>
-                        <h3>Student Snack Consumption & Environmental Awareness</h3>
+                        <h3>LAUTECH Student Snack Preference</h3>
                         <p>
-                            Analyzed behavioral data of 300+ LAUTECH students to identify eco-conscious habits and showcase sustainability trends.
-                            Built interactive dashboards for better environmental awareness.
+                            <strong>Question:</strong> Which snacks, budgets, and buying patterns matter to students?<br>
+                            <strong>Evidence:</strong> 3,500 supplied survey responses with transparent quality checks.
                         </p>
                         <div class="project-tags">
-                            <span class="project-tag">Power BI</span>
+                            <span class="project-tag">Survey</span>
                             <span class="project-tag">Excel</span>
                             <span class="project-tag">Data Analysis</span>
                         </div>
                         <div class="project-links">
-                            <a href="citi-bikes.html" class="project-link primary">Open Dashboard</a>
+                            <a href="snack-data-request.html" class="project-link primary">View Case Study →</a>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-icon">⚡</div>
                         <h3>Solar & Wind Power Trends in Nigeria</h3>
                         <p>
-                            Supported a sustainability initiative by analyzing renewable energy data and building insightful visualizations to inform research and policy.
+                            <strong>Question:</strong> How have solar, wind, and hydropower generation changed over time?<br>
+                            <strong>Evidence:</strong> World-level series from 1965–2025 with units and source notes.
                         </p>
                         <div class="project-tags">
                             <span class="project-tag">Excel</span>
@@ -144,14 +157,15 @@
                             <span class="project-tag">Sustainability</span>
                         </div>
                         <div class="project-links">
-                            <a href="projects.html" class="project-link primary">See Analysis</a>
+                            <a href="renewable-trends.html" class="project-link primary">View Case Study →</a>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-icon">📈</div>
                         <h3>Academic Performance Analytics</h3>
                         <p>
-                            Cleaned and visualized student exam scores for LAUTECH, enabling teachers to make data-driven decisions for better academic outcomes.
+                            <strong>Question:</strong> Which learning and outcome patterns should be investigated?<br>
+                            <strong>Status:</strong> Case study ready for a verified exam-score export.
                         </p>
                         <div class="project-tags">
                             <span class="project-tag">Excel</span>
@@ -159,17 +173,35 @@
                             <span class="project-tag">Automation</span>
                         </div>
                         <div class="project-links">
-                            <a href="projects.html" class="project-link primary">View Project</a>
+                            <a href="mailto:elishao2000@gmail.com?subject=Academic%20performance%20dataset" class="project-link secondary">Share Dataset →</a>
                         </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">🚲</div>
+                        <h3>Citi Bikes Data Analysis</h3>
+                        <p><strong>Question:</strong> When, where, and by whom are bikes used?<br><strong>Evidence:</strong> A source-linked Jersey City trip-history dashboard with scope and limitations.</p>
+                        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Chart.js</span><span class="project-tag">Data Visualization</span></div>
+                        <div class="project-links"><a href="citi-bikes.html" class="project-link primary">View Case Study →</a></div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <section id="process" class="analytics-process fade-in">
+            <div class="process-container">
+                <p class="eyebrow">MY ANALYTICS PROCESS</p>
+                <h2>From a question to a recommendation.</h2>
+                <p class="section-intro">A good dashboard is the visible end of a careful chain of decisions. I make each stage clear so the result can be reviewed, repeated, and trusted.</p>
+                <div class="process-timeline"><article><span>01</span><h3>Ask</h3><p>Define the decision and the question the data should answer.</p></article><article><span>02</span><h3>Collect</h3><p>Locate the real source, scope, fields, and response window.</p></article><article><span>03</span><h3>Clean</h3><p>Check duplicates, missing values, categories, units, and assumptions.</p></article><article><span>04</span><h3>Analyze</h3><p>Summarize patterns, compare groups, and test the useful questions.</p></article><article><span>05</span><h3>Visualize</h3><p>Build charts that make the insight and limitation visible.</p></article></div>
+            </div>
+        </section>
+
+        <section class="resume-callout fade-in"><div><p class="eyebrow">RESUME / CV</p><h2>Want to know more about my experience?</h2><p>Review the one-page visual portfolio CV for my education, skills, experience, and contact details.</p></div><a href="resume.html" class="btn btn-primary">Download CV →</a></section>
+
         <!-- Contact Section -->
         <section id="contact" class="contact fade-in">
             <div class="contact-container">
-                <h2>Contact ElishaInsights</h2>
+                <h2>Let's work with data.</h2>
                 <p>
                     Would you be interested in collaborating or have a data-driven project in mind? 
                     Let’s work together to create solutions for sustainability, education, or community impact.
@@ -192,6 +224,6 @@
     <footer>
         <p>&copy; 2025 ElishaInsights. All rights reserved.</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="script.js?rev=detail-template-v1"></script>
 </body>
 </html>
