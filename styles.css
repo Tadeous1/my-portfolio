@@ -2704,3 +2704,118 @@ body.dark-mode .contact-link:hover {
         right: -0.35rem;
     }
 }
+
+/* Visibility refinement: make the identity mark and social links read as deliberate controls rather than faint decoration. */
+.brand-lockup {
+    min-height: 2.85rem;
+    gap: 0.65rem;
+    padding: 0.28rem 0.82rem 0.28rem 0.3rem;
+    border: 1px solid rgba(94, 234, 212, 0.38);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.72);
+    text-decoration: none;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.18);
+}
+
+.brand-lockup img,
+.brand-symbol-fallback {
+    width: 2.42rem;
+    height: 2.42rem;
+    padding: 0.24rem;
+    border-radius: 0.78rem;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.18), 0 6px 16px rgba(var(--accent-rgb), 0.3);
+}
+
+.logo {
+    font-size: 1.68rem;
+    letter-spacing: -0.035em;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+}
+
+.social-icons {
+    gap: 0.85rem;
+}
+
+.social-icons a {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    min-height: 46px;
+    border: 2px solid var(--accent);
+    background: var(--accent-soft) !important;
+    color: var(--accent-strong) !important;
+    box-shadow: 0 7px 18px rgba(var(--accent-rgb), 0.22), 0 0 0 4px rgba(var(--accent-rgb), 0.08);
+}
+
+.social-icons a:hover,
+.social-icons a:focus-visible {
+    background: var(--accent) !important;
+    color: var(--accent-contrast) !important;
+    border-color: var(--accent);
+    outline: 3px solid rgba(var(--accent-rgb), 0.28);
+    outline-offset: 2px;
+}
+
+.social-icons a:focus-visible {
+    text-decoration: none;
+}
+
+.social-icons svg {
+    width: 25px;
+    height: 25px;
+    stroke-width: 2.35;
+}
+
+body.dark-mode .brand-lockup {
+    border-color: rgba(153, 246, 228, 0.48);
+    background: rgba(11, 17, 32, 0.82);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.34);
+}
+
+body.dark-mode .social-icons a {
+    background: var(--accent-surface) !important;
+    color: var(--accent-on-dark) !important;
+    border-color: var(--accent-on-dark);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28), 0 0 0 4px rgba(var(--accent-rgb), 0.12);
+}
+
+body.dark-mode .social-icons a:hover,
+body.dark-mode .social-icons a:focus-visible {
+    background: var(--accent) !important;
+    color: var(--accent-contrast) !important;
+}
+
+@media (max-width: 768px) {
+    .brand-lockup {
+        min-height: 2.5rem;
+        gap: 0.48rem;
+        padding-right: 0.62rem;
+    }
+
+    .brand-lockup img,
+    .brand-symbol-fallback {
+        width: 2.1rem;
+        height: 2.1rem;
+        padding: 0.2rem;
+        border-radius: 0.65rem;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero .social-icons a {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+
+    .hero .social-icons svg {
+        width: 21px;
+        height: 21px;
+    }
+}
